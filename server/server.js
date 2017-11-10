@@ -19,7 +19,10 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user has joined the group'));
 
     socket.on('createMessage', (message) => {
-        io.emit('newMessage', generateMessage(message.from, message.text));
+        if (!message) {
+            return io.emit("invalidMessage", "Message Invalid!")
+        }
+        socket.broadcast.emit("newMessage", message)
     });
 
     socket.on('disconnect', () => {
