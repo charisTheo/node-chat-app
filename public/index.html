@@ -1,12 +1,36 @@
 <!DOCTYPE html>
-<html>  
-    <head>
-        <meta charset="utf-8">
-    </head>
-    <body>
-        <p>Welcome to the chat app!</p>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 , maximum-scale=1.0">
+    <meta name="theme-color" content="#620eb1">
     
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="/js/index.js"></script>
-    </body>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- FontAwesome Plugin -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <!--Google fonts Plugin-->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Comfortaa|Jura|Advent+Pro" rel="stylesheet"> -->
+</head>
+
+<body>
+    <h3 id="welcomeMessage">Welcome to the chat app!</h3> 
+
+    <div class="content">
+        <h4 id="messages"> <strong><u>Conversation</u></strong> </br>
+        </h4>
+    </div>
+
+    <form>
+        <input name="message" id="inputMessage" type="text" placeholder="type message here...">
+        <input id="submit" value=" " type="submit">
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/jquery-3.2.1.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
 </html>
