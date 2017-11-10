@@ -3,6 +3,7 @@ var socket = io();
 socket.on('connect', function(){
     console.log('Connected to server');
     
+    socket.emit("newUser", {name: navigator.userAgent})
 });
 
 socket.on('newMessage', function(message){

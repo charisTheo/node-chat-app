@@ -18,9 +18,9 @@ io.on('connection', (socket) => {
 
     socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user has joined the group'));
 
-    socket.on('createMessage', (message) => {
-        io.emit('newMessage', generateMessage(message.from, message.text));
-    });
+    socket.on("newUser", (message) => {
+        socket.broadcast.emit("newMessage", generateMessage("Admin", message.name + "has joined the group!"))
+    })
 
     socket.on('disconnect', () => {
         console.log('Disconnected from client');
