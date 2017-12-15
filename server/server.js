@@ -15,17 +15,16 @@ io.on('connection', (socket) => {
     console.log('New User connected');
 
     socket.on("newUser", (message) => {
-        socket.emit("newMessage", generateMessage("Admin", `Welcome ${message.name}!`));
-        socket.broadcast.emit("newMessage", generateMessage("Admin", message.name + " has joined the group!"));
+        socket.emit("newMessage", generateMessage("Server", `Welcome ${message.name}!`));
+        socket.broadcast.emit("newMessage", generateMessage("Server", message.name + " has joined the group!"));
     });
 
     socket.on("createMessage", (message) => {
-        console.log("newMessage", message)
         io.emit("newMessage", generateMessage(message.from, message.text));
     });
 
     socket.on('disconnect', () => {
-        console.log('Disconnected from client');
+        socket.broadcast.emit("newMessage", generateMessage("Server", ));
     });
 });
 

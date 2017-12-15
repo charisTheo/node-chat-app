@@ -1,3 +1,7 @@
+/* light = rgb(161, 70, 247)
+normal = rgb(98, 14, 177)
+dark = rgb(57, 9, 105) */
+
 *,
 *::after,
 *::before, 
@@ -12,8 +16,7 @@ body {
 }
 html, body {
     color: rgb(161, 70, 247);
-    text-align: center;
-    background-color: rgb(98, 14, 177);
+    background-color: #151515;     
     height: 100%;
     width: 100%;
     margin: 0;
@@ -42,24 +45,26 @@ html, body {
   
 /*-----------------------STYLES--------------------*/
 #welcomeMessage {
-    margin: 30px 10px;
+    margin: 30px auto;
+    display: inline-block;
+    width: 100%;
 }
 
-.content {
-    max-height: 500px;
-    overflow-y: scroll;
-    overflow-wrap: break-word;
-    background-color: rgba(0,0,0,0.35);
-    border-radius: 5px;
-    margin: 30px;
+.container {
+    min-height: 100%;
+    background-color: rgb(98, 14, 177);
 }
 
 #messages {
-    width: 100%;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
     overflow-x: hidden;
+    background-color: rgb(57, 9, 105);    
     font-weight: 300;
+    border-radius: 5px;
+    padding: 30px;
+    margin: 30px;
     text-align: left;
-    padding-left: 15px;
 }
 
 strong {
@@ -77,7 +82,7 @@ strong {
     padding: 0;
     background-color: transparent;
     border: none;
-    background: url(./../send.svg);
+    background: url(./../img/send.svg);
     background-size: 50px 50px; 
     width: 50px;
     height: 50px;
@@ -91,3 +96,23 @@ strong {
     border: none;
 }
 
+/* add support */
+form#messageForm {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+svg#jet-smoke {
+    z-index: 1;
+}
+
+input#submit {
+    z-index: 2;    
+}
+
+#modal-19 .perspective button.btn-3d:focus,
+#modal-19 .perspective button.btn-3d:hover {
+    background-color: rgb(98, 14, 177);
+}

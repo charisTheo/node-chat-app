@@ -1,0 +1,73 @@
+button,
+button:hover,
+button:active,
+button:focus,
+a,
+a:hover,
+a:active,
+a:focus {
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+
+.btn-3d {
+    background-color: rgb(57, 9, 105);
+    color: #fff;
+    outline: none;
+    padding: 10px 5px;
+    font-weight: 900;
+    font-family: Lato,Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    /* add support */
+    transform: rotateX(15deg);
+}
+.btn-3d::after {
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+    position: absolute;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: -1;
+    content: "";
+    width: 100%;
+    height: 40%;
+    left: 0;
+    top: 100%;
+    background-color: rgb(28, 4, 51);
+    /* add support */
+    transform: rotateX(-90deg);
+    transform-origin: 0% 0%;
+    -ms-transform-origin: 0% 0%;
+    -moz-transform-origin: 0% 0%;
+    -webkit-transform-origin: 0% 0%;
+}
+.btn-3d:active {
+    background-color: rgb(57, 9, 105);
+    /* add support */
+    transform: rotateX(0deg); 
+}
+.btn-3d:hover, .btn-3d:focus {
+    background-color: rgb(161, 70, 247);
+    color: #fff;
+    outline: none !important;
+    outline-style: none;        
+}
+.btn-3d:blur {
+    outline: none;
+    outline-style: none;
+}
+
+.perspective {
+    perspective: 800px;
+    -moz-perspective: 800px;
+    -webkit-perspective: 800px;
+    display: inline-block;
+}

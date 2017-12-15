@@ -1,6 +1,7 @@
 var socket = io();
-var user1 = "Charis";
-var user2 = "Giannis";
+var username = window.localStorage.getItem("username") || "";
+
+$('#jet-smoke').hide();
 
 $(document).on("ready", function(){
     $('#inputMessage').focus();
@@ -15,30 +16,37 @@ socket.on('connect', function(){
         from: "server",
         text: "Connected to server"
     });
-    
-    socket.emit("newUser", {name: navigator.userAgent});
-    socket.emit("createMessage", {
-        from: user2,
-        text: "Hello!"
-    }, function() {
-        console.log("Got it!") //callback function for acknoledgment
-    });
+    if (username == "") {
+        showPopup();
+    } else {
+        socket.emit("createMessage", {from: "Server", text: `Welcome back ${username}!`});    
+    }
 });
 
 socket.on('disconnect', function(){
-    console.log('Disconnected from server');                
+    socket.emit('createMessage', {
+        from: "server",
+        text: `${username} has left the chat.` 
+    });
 });
 
 //on sending message
-$('body form').on("submit", function(e){
+$('#messageForm').on("submit", function(e){
     e.preventDefault();
     var mes = this.elements["message"].value.toString();
     if (mes == "") {
         return;
     }
+    
+    // start animation from sendSvgAnim.js
+    createJets(); 
+    $('#jet-smoke').show("fast")
+                .css("transform", "translateX(22px)")
+                .delay(1000)
+                .hide("fast");
 
     socket.emit("createMessage", {
-        from: user1,
+        from: username,
         text: mes
     });
     $('#inputMessage').val("");
@@ -56,3 +64,14 @@ function renderMessage(message) {
     //     scrollTop: $('#messages').scrollHeight - $('#messages').clientHeight
     // }, 1000);
 }
+
+function showPopup() {
+    $('.md-trigger').click();
+}
+
+$('#addUsername').on("submit", function(e){
+    e.preventDefault();
+    username = $('#username').val();
+    window.localStorage.setItem("username", username);
+    socket.emit("newUser", {name: username});
+});

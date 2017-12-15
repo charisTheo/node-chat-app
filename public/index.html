@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 , maximum-scale=1.0">
     <meta name="theme-color" content="#620eb1">
-    
+
+    <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
     <!-- FontAwesome Plugin -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
     <!--Google fonts Plugin-->
@@ -15,21 +17,103 @@
 </head>
 
 <body>
-    <h3 id="welcomeMessage">Welcome to the chat app!</h3> 
-
-    <div class="content">
-        <h4 id="messages"> <strong><u>Conversation</u></strong> </br>
-        </h4>
+    <div class="md-modal" id="modal-19">
+        <div class="md-content">
+            <h3>Modal Dialog</h3>
+            <div>
+                <form id="addUsername">
+                    <label for="username">Insert a username:</label>
+                    <input type="text" name="username" id="username" placeholder="ex: theGreatest" required>
+                    <p class="perspective">
+                        <button type="submit" form="addUsername" class="btn-3d md-close">Done</button>
+                    </p>
+                </form>
+            </div>
+        </div>
     </div>
+    <div class="md-overlay"></div>
 
-    <form>
-        <input name="message" id="inputMessage" type="text" placeholder="type message here...">
-        <input id="submit" value=" " type="submit">
-    </form>
+    <div class="container">
+        <h3 id="welcomeMessage">Welcome to the chat app!</h3>
+        <p class="perspective">
+            <button class="btn-3d md-trigger md-setperspective" data-modal="modal-19">Change username</button>
+        </p>
+        <h4 id="messages">
+            <strong>
+                <u>Conversation</u>
+            </strong>
+            </br>
+        </h4>
+
+        <form id="messageForm">
+            <input name="message" id="inputMessage" type="text" placeholder="type message here...">
+            <svg id="jet-smoke" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="50"
+                width="60" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 60.000001 50.000001" xmlns:dc="http://purl.org/dc/elements/1.1/">
+                <defs id="defs5213">
+                    <clipPath id="rainbowClip-3">
+                        <use id="use6914" xlink:href="#rocketClip" height="100%" width="100%" y="0" x="0" overflow="visible" />
+                    </clipPath>
+                    <clipPath id="rainbowClip-5">
+                        <use id="use8034" xlink:href="#rocketClip" height="100%" width="100%" y="0" x="0" overflow="visible" />
+                    </clipPath>
+                </defs>
+                <g transform="translate(0,-1002.4)">
+                    <g id="g8815" fill-rule="evenodd" transform="matrix(0 .35611 -.45025 0 488.4 951.89)">
+                        <rect id="rect8805" height="86.732" width="10.119" y="959.4" x="188.4" fill="#7d6aad" />
+                        <rect id="rect8807" height="86.732" width="10.119" y="959.4" x="198.04" fill="#5991aa" />
+                        <rect id="rect8809" height="86.732" width="10.119" y="959.4" x="207.67" fill="#ecb447" />
+                        <rect id="rect8811" height="86.732" width="10.119" y="959.4" x="217.31" fill="#cc583f" />
+                        <rect id="rect8813" height="86.732" width="10.119" y="959.4" x="226.95" fill="#75c095" />
+                    </g>
+                    <g transform="matrix(0 .35611 -.35611 0 185.9 924.13)" class="jetBubbles">
+                        <g id="greyJets" fill="#2d2d2d">
+                            <circle id="circle7015" cx="289" cy="489" r="23" class="jetBubble" />
+                            <circle id="circle7017" cx="270" cy="470" r="20" class="jetBubble" />
+                            <circle id="circle7019" cx="319" cy="483" r="21" class="jetBubble" />
+                        </g>
+                        <g id="colorJets" stroke-width="0">
+                            <circle id="circle7022" class="jetBubble" cy="449" cx="312" r="8" fill="#ecb447" />
+                            <circle id="circle7024" class="jetBubble" cy="480" cx="320" r="10" fill="#7d6aad" />
+                            <circle id="circle7026" class="jetBubble" cy="460" cx="290" r="10" fill="#7d6aad" />
+                            <circle id="circle7028" class="jetBubble" cy="453" cx="329" r="11" fill="#ecb447" />
+                            <circle id="circle7030" class="jetBubble" cy="463" cx="286" r="7" fill="#cc583f" />
+                            <circle id="circle7032" class="jetBubble" cy="469" cx="289" r="24" fill="#ecb447" />
+                            <circle id="circle7034" class="jetBubble" cy="450" cx="260" r="20" fill="#7d6aad" />
+                            <circle id="circle7036" class="jetBubble" cy="463" cx="319" r="10" fill="#5991aa" />
+                            <circle id="circle7038" class="jetBubble" cy="463" cx="290" r="18" fill="#cc583f" />
+                            <circle id="circle7040" class="jetBubble" cy="443" cx="312" r="21" fill="#75c095" />
+                            <circle id="circle7042" class="jetBubble" cy="443.4" cx="275" r="12" fill="#5991aa" />
+                        </g>
+                        <use xlink:href="#badge" height="100%" width="100%" y="0" x="0" />
+                    </g>
+                    <rect id="rect6970" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)" height="212.7" width="10" y="263.3"
+                        x="275" fill="#cc583f" />
+                    <rect id="rect6972" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)" height="212.7" width="10" y="263.3"
+                        x="285" fill="#ecb447" />
+                    <rect id="rect6974" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)" height="212.7" width="10" y="263.3"
+                        x="295" fill="#75c095" />
+                    <rect id="rect6976" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)" height="212.7" width="10" y="263.3"
+                        x="305" fill="#5991aa" />
+                    <rect id="rect6978" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)" height="212.7" width="10" y="263.3"
+                        x="315" fill="#7d6aad" />
+                    <rect id="rect8096" clip-path="url(#rainbowClip-5)" transform="translate(35.47 1002.7)" height="212.7" width="10" y="263.3"
+                        x="305" fill="#7204ff" />
+                </g>
+            </svg>
+            <input id="submit" value=" " type="submit">
+        </form>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/jquery-3.2.1.js"></script>
     <script src="./js/jquery-ui.js"></script>
+    <script src="./js/TimelineMax.js"></script>
+    <script src="./js/TweenMax.js"></script>
+    <script src="./js/sendSvgAnim.js"></script>
+    <script src="./js/classie.js"></script>
+    <script src="./js/cssParser.js"></script>
+    <script src="./js/modalEffects.js"></script>
     <script src="./js/index.js"></script>
 </body>
 
