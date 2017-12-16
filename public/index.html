@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/modal.css">
     <!-- FontAwesome Plugin -->
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!--Google fonts Plugin-->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Comfortaa|Jura|Advent+Pro" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Jura|Advent+Pro" rel="stylesheet">
 </head>
 
 <body>
@@ -34,6 +34,8 @@
     <div class="md-overlay"></div>
 
     <div class="container">
+        <div id="searchResults"></div>
+
         <h3 id="welcomeMessage">Say something brilliant!</h3>
         <p class="perspective">
             <button class="btn-3d md-trigger md-setperspective" data-modal="modal-19">Change username</button>
@@ -46,7 +48,12 @@
         </div>
 
         <form id="messageForm">
+            <label id="stickerSearch" for="toggleStickerSearch">
+                <i class="fa fa-smile-o" aria-hidden="true"></i>
+            </label>
+            <input id="toggleStickerSearch" type="checkbox" checked>
             <input name="message" id="inputMessage" type="text" placeholder="type message here..." autocomplete="off">
+            
             <div id="jet-container">
                 <svg id="jet-smoke" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="50"
                     width="60" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -116,6 +123,7 @@
     <script src="./js/classie.js"></script>
     <script src="./js/cssParser.js"></script>
     <script src="./js/modalEffects.js"></script>
+    <script src="./js/stickerSearch.js"></script>
     <script src="./js/index.js"></script>
 </body>
 

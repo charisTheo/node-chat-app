@@ -13,7 +13,7 @@ socket.on('newMessage', function(message){
 
 socket.on('connect', function(){
     renderMessage({
-        from: "server",
+        from: "Server",
         text: "Connected to server"
     });
     if (username == "") {
@@ -25,7 +25,7 @@ socket.on('connect', function(){
 
 socket.on('disconnect', function(){
     socket.emit('createMessage', {
-        from: "server",
+        from: "Server",
         text: `${username} has left the chat.` 
     });
 });
@@ -58,7 +58,7 @@ $('#messageForm').on("submit", function(e){
 
 function renderMessage(message) {
     var html = $('#messages').html();
-    html += "<br> <strong>" + message.from.toString() + "</strong>:  <i>" + message.text.toString() + "</i><br>";
+    html += "<br> <strong>" + message.from.toString() + "</strong>:  " + message.text.toString() + "<br>";
     $('#messages').html(html)
 
     //scroll to bottom of page

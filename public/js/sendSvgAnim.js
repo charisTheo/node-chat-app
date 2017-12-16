@@ -23,10 +23,8 @@ function createJets(){
  //configure initial radius of each circle
     if (flag) {
       jetBubbles[i].setAttribute("r", radii[i]);
-      console.log("Set: ", radii[i]);
     } else {
       radii[i] = jetBubbles[i].getAttribute("r");
-      console.log("Get: ", radii[i]);
     }
   }
 

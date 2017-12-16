@@ -12,15 +12,20 @@ body {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 html, body {
+    font-family: 'Comfortaa', Helvetica, sans-serif;
     color: rgb(161, 70, 247);
     background-color: #151515;     
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
+}
+strong {
+    font-family: 'Advent Pro', Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 *::-webkit-scrollbar {
     width: 5px; 
@@ -44,12 +49,6 @@ html, body {
 }
   
 /*-----------------------STYLES--------------------*/
-#welcomeMessage {
-    margin: 10px auto;
-    display: inline-block;
-    width: 100%;
-}
-
 .container {
     min-height: 100%;
     padding: 10px;
@@ -62,7 +61,27 @@ html, body {
     flex-direction: column;
     justify-content: space-between;
 }
-
+#searchResults {
+    margin: 0;
+    padding: 0;
+    max-height: 40vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+    display: flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    z-index: 999;
+}
+#welcomeMessage {
+    margin: 10px auto;
+    display: inline-block;
+    width: 100%;
+}
 #messages {
     height: 60vh;
     max-height: 60vh;
@@ -75,18 +94,11 @@ html, body {
     padding: 15px;
     text-align: left;
 }
-
-strong {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
 input {
     border-radius: 5px;
     text-align: left;
     padding: 8px;
 }
-
 #submit {
     padding: 0;
     background-color: transparent;
@@ -96,7 +108,6 @@ input {
     width: 50px;
     height: 50px;
 }
-
 #submit:focus,
 #submit:active,
 input:focus
@@ -104,7 +115,6 @@ input:active {
     outline: none;
     border: none;
 }
-
 /* add support */
 form#messageForm {
     padding: 8px 0;
@@ -118,7 +128,12 @@ form#messageForm {
     justify-content: center;
     position: relative;
 }
-
+#stickerSearch {
+    color: #FF2D00;
+}
+input#toggleStickerSearch {
+    display: none;
+}
 #jet-container {
     max-width: 115px;
     min-width: 55px;
