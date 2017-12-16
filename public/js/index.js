@@ -37,14 +37,17 @@ $('#messageForm').on("submit", function(e){
     if (mes == "") {
         return;
     }
-    
+
+    if (username == "") {
+        return showPopup();
+    }
+
     // start animation from sendSvgAnim.js
     createJets(); 
     $('#jet-smoke').show("fast")
-                .css("transform", "translateX(22px)")
                 .delay(1000)
-                .hide("fast");
-
+                .hide("fast")
+                
     socket.emit("createMessage", {
         from: username,
         text: mes
@@ -58,11 +61,8 @@ function renderMessage(message) {
     html += "<br> <strong>" + message.from.toString() + "</strong>:  <i>" + message.text.toString() + "</i><br>";
     $('#messages').html(html)
 
-    // scroll to the bottom of the div
-    // $('#messages').scrollTop($('#messages').scrollHeight);
-    // $('#messages').stop().animate({
-    //     scrollTop: $('#messages').scrollHeight - $('#messages').clientHeight
-    // }, 1000);
+    //scroll to bottom of page
+    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 }
 
 function showPopup() {

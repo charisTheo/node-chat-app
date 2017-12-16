@@ -45,25 +45,34 @@ html, body {
   
 /*-----------------------STYLES--------------------*/
 #welcomeMessage {
-    margin: 30px auto;
+    margin: 10px auto;
     display: inline-block;
     width: 100%;
 }
 
 .container {
     min-height: 100%;
+    padding: 10px;
     background-color: rgb(98, 14, 177);
+    display: flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #messages {
+    height: 60vh;
+    max-height: 60vh;
     overflow-y: scroll;
     overflow-wrap: break-word;
     overflow-x: hidden;
     background-color: rgb(57, 9, 105);    
     font-weight: 300;
     border-radius: 5px;
-    padding: 30px;
-    margin: 30px;
+    padding: 15px;
     text-align: left;
 }
 
@@ -72,10 +81,10 @@ strong {
     font-size: 1.2em;
 }
 
-#inputMessage {
+input {
     border-radius: 5px;
     text-align: left;
-    padding: 5px;
+    padding: 8px;
 }
 
 #submit {
@@ -90,29 +99,66 @@ strong {
 
 #submit:focus,
 #submit:active,
-#inputMessage:focus
-#inputMessage:active {
+input:focus
+input:active {
     outline: none;
     border: none;
 }
 
 /* add support */
 form#messageForm {
+    padding: 8px 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
     flex-direction: row;
     align-content: center;
     justify-content: center;
+    position: relative;
 }
 
+#jet-container {
+    max-width: 115px;
+    min-width: 55px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
 svg#jet-smoke {
     z-index: 1;
+    margin-right: -22px;
 }
-
+input#inputMessage {
+    width: 100%;
+}
 input#submit {
-    z-index: 2;    
+    z-index: 2;
 }
 
 #modal-19 .perspective button.btn-3d:focus,
 #modal-19 .perspective button.btn-3d:hover {
     background-color: rgb(98, 14, 177);
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: rgb(161, 70, 247);
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
 }
