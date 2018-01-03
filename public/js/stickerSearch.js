@@ -1,7 +1,7 @@
 let GIPHY_API_KEY = "Kc3a4yWoqg63GbhhjCARBEta0tDpCHBW";
 let query = "";
 $('#inputMessage').off();
-//$('#closeResultsBtn').hide();
+$('#removeInputBtn').hide();
 
 $('#stickerSearch').on("click", function(e) {
     e.preventDefault();
@@ -32,17 +32,19 @@ $('#stickerSearch').on("click", function(e) {
 });
 function toggleGifSearch(bool) {
     if (bool) {
+        $('#stickerSearch').css("opacity", "1");
         $('div#searchResults').addClass("open");        
         $('#toggleStickerSearch').prop("checked", false);
-        $('#closeResultsBtn').show()
+        $('#removeInputBtn').show()
     } else {        
+        $('#stickerSearch').css("opacity", "0.7");        
         $('#toggleStickerSearch').prop("checked", true);        
         $('#inputMessage').attr("placeholder", "type message here...")
                     .val("")
                     .off();
         $('#searchResults').removeClass("open")
                         .empty();
-        $('#closeResultsBtn').hide();
+        $('#removeInputBtn').hide();
     }
 }
 function renderImage(anchor){
@@ -54,7 +56,7 @@ function renderImage(anchor){
     return true;
 };
 
-$('#closeResultsBtn').on("click", function(e) {
+$('#removeInputBtn').on("click", function(e) {
     e.preventDefault();
 
 });

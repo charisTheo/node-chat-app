@@ -85,3 +85,22 @@ $("input[type='radio']").on("click", function(e) {
     
     previousColor = color;
 });
+
+$('#removeInputBtn').on("click", function(e) {
+    e.preventDefault();
+    $('#inputMessage').val("");
+    $(this).hide("slow");
+});
+
+$('#inputMessage').keyup(function(e) {
+    if ($(this).val() != "") {
+        $('#removeInputBtn').show("slow");
+    } else {
+        $('#removeInputBtn').hide("slow");
+    }
+});
+if ($('#inputMessage').val() == "") {
+    $('#removeInputBtn').hide("slow");    
+}
+
+//add listener on #selectColor to store color preference in local storage
