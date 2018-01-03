@@ -3,8 +3,12 @@ var username = window.localStorage.getItem("username") || "";
 
 $('#jet-smoke').hide();
 
-$(document).on("ready", function(){
+$(document).ready(function(){
     $('#inputMessage').focus();
+    var colorPref = window.localStorage.getItem("color-preference") || undefined;
+    if (colorPref) {
+        $(`#${colorPref}`).click();
+    }
 });
 
 socket.on('newMessage', function(message){
@@ -92,7 +96,7 @@ $('#removeInputBtn').on("click", function(e) {
     $(this).hide("slow");
 });
 
-$('#inputMessage').keyup(function(e) {
+$('#inputMessage').keyup(function() {
     if ($(this).val() != "") {
         $('#removeInputBtn').show("slow");
     } else {
@@ -104,3 +108,7 @@ if ($('#inputMessage').val() == "") {
 }
 
 //add listener on #selectColor to store color preference in local storage
+$('#selectColor label').on("click", function(e) {
+    var colorPreference = e.target.getAttribute("for");
+    window.localStorage.setItem("color-preference", colorPreference);
+});
