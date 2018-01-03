@@ -13,7 +13,7 @@ a:focus {
 
 
 .btn-3d {
-    background-color: rgb(57, 9, 105);
+    background-color: #e254ff;
     color: #fff;
     outline: none;
     padding: 10px 5px;
@@ -41,7 +41,7 @@ a:focus {
     height: 40%;
     left: 0;
     top: 100%;
-    background-color: rgb(28, 4, 51);
+    background-color: #7200ca;
     /* add support */
     transform: rotateX(-90deg);
     transform-origin: 0% 0%;
@@ -50,12 +50,12 @@ a:focus {
     -webkit-transform-origin: 0% 0%;
 }
 .btn-3d:active {
-    background-color: rgb(57, 9, 105);
+    background-color: #aa00ff;
     /* add support */
     transform: rotateX(0deg); 
 }
 .btn-3d:hover, .btn-3d:focus {
-    background-color: rgb(161, 70, 247);
+    background-color: #e254ff;
     color: #fff;
     outline: none !important;
     outline-style: none;        

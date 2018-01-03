@@ -75,3 +75,13 @@ $('#addUsername').on("submit", function(e){
     window.localStorage.setItem("username", username);
     socket.emit("newUser", {name: username});
 });
+
+var previousColor;
+$("input[type='radio']").on("click", function(e) {
+    e.preventDefault();
+    var color = $(this).val();
+    $(document.body).removeClass(previousColor);
+    $(document.body).addClass(color); 
+    
+    previousColor = color;
+});

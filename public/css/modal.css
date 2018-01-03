@@ -40,7 +40,7 @@
 	left: 0;
 	z-index: 1000;
     opacity: 0;
-	background: rgba(98, 14, 177, 0.8);
+	background: rgba(114, 0, 202, 0.8);
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
@@ -52,7 +52,7 @@
 /* Content styles */
 .md-content {
 	color: #fff;
-	background: rgb(161, 70, 247);
+	background-color: #aa00ff;
 	position: relative;
 	border-radius: 3px;
 	margin: 0 auto;
