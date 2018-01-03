@@ -15,15 +15,24 @@ socket.on('newMessage', function(message){
     renderMessage(message);
 });
 
-socket.on('connect', function(){
-    renderMessage({
-        from: "Server",
-        text: "Connected to server"
+socket.on("activeUsers", function (message) {
+    var activeMembers = $('.active-members').html();
+    message.users.forEach(user => {
+        activeMembers += `<p class="${user}"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>${user}</p>`;
     });
+    $('.active-members').html(activeMembers);
+});
+socket.on("inactiveUser", function(message) {
+    // console.log(message);
+    $(`p.${message.user}`).remove();
+});
+
+socket.on('connect', function(){    
     if (username == "") {
         showPopup();
     } else {
-        socket.emit("createMessage", {from: "Server", text: `Welcome back ${username}!`});    
+        socket.emit("createMessage", {from: "Server", text: `Welcome back ${username}!`});
+        socket.emit('userConnected', {user: username});
     }
 });
 
@@ -32,6 +41,7 @@ socket.on('disconnect', function(){
         from: "Server",
         text: `${username} has left the chat.` 
     });
+    socket.emit("userDisconnected", {user: username});
 });
 
 //on sending message

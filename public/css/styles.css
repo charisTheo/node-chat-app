@@ -99,6 +99,26 @@ strong {
     display: inline-block;
     width: 100%;
 }
+.active-members {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+}
+.active-members p {
+    display: inline-block;
+    margin: 0;
+    font-size: 0.8em;
+    font-weight: bolder;
+}
+.active-members i{
+    color: #00e676;
+    border-radius: 50%;
+    box-shadow: 0px 0 2px 2px rgba(0,0,0,0.6);
+}
 #messages {
     height: 60vh;
     max-height: 60vh;
@@ -275,7 +295,8 @@ body.green #modal-19 .perspective button.btn-3d:hover,
 body.green .btn-3d::after {
     background-color: #32cb00;
 }
-body.green #stickerSearch{
+body.green #stickerSearch,
+body.green .active-members p{
     color: #32cb00;
 }
 body.green .btn-3d,
@@ -301,7 +322,8 @@ body.purple #modal-19 .perspective button.btn-3d:hover,
 body.purple .btn-3d::after {
     background-color: #7200ca;
 }
-body.purple #stickerSearch{
+body.purple #stickerSearch,
+body.purple .active-members p{
     color: #7200ca;
 }
 body.purple .btn-3d,
@@ -328,7 +350,8 @@ body.blue #modal-19 .perspective button.btn-3d:hover,
 body.blue .btn-3d::after  {
     background-color: #004ba0;
 }
-body.blue #stickerSearch{
+body.blue #stickerSearch,
+body.blue .active-members p{
     color: #004ba0;
 }
 body.blue .btn-3d,
@@ -355,7 +378,8 @@ body.orange #modal-19 .perspective button.btn-3d:hover,
 body.orange .btn-3d::after {
     background-color: #c30000;
 }
-body.orange #stickerSearch{
+body.orange #stickerSearch,
+body.orange .active-members p{
     color: #c30000;
 }
 body.orange .btn-3d,
@@ -381,7 +405,8 @@ body.red #modal-19 .perspective button.btn-3d:hover,
 body.red .btn-3d::after {
     background-color: #9b0000;
 }
-body.red #stickerSearch{
+body.red #stickerSearch,
+body.red .active-members p{
     color: #9b0000;
 }
 body.red .btn-3d,
@@ -395,3 +420,9 @@ body.red .md-content {
     background-color: #d50000;
 }
 
+*.float-left {
+    float: left;
+}
+*.float-right {
+    float: right;
+}
