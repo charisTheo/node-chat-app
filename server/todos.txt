@@ -1,2 +1,3 @@
 -server giphy through https
 -fix active members - they show only on one device after refreshing the browser on the other
+-set title to dark color

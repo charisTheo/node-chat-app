@@ -1,5 +1,5 @@
-var socket = io();
-var username = window.localStorage.getItem("username") || "";
+let socket = io();
+let username = window.localStorage.getItem("username") || "";
 
 $('#jet-smoke').hide();
 
@@ -27,7 +27,7 @@ socket.on("inactiveUser", function(message) {
     $(`p.${message.user}`).remove();
 });
 
-socket.on('connect', function(){    
+socket.on('connect', function() {    
     if (username == "") {
         showPopup();
     } else {
@@ -36,12 +36,16 @@ socket.on('connect', function(){
     }
 });
 
-socket.on('disconnect', function(){
+socket.on('disconnect', function() {
     socket.emit('createMessage', {
         from: "Server",
         text: `${username} has left the chat.` 
     });
     socket.emit("userDisconnected", {user: username});
+});
+
+socket.on('newLocationMessage', function(message) {
+    window.open(message.url, '_blank');
 });
 
 //on sending message
@@ -69,6 +73,25 @@ $('#messageForm').on("submit", function(e){
     $('#inputMessage').val("");
 });
 
+let locationButton = document.getElementById('send-location');
+
+locationButton.addEventListener("click", function() {
+    if (!navigator.geolocation) {
+        return alert("Geolocation is not supported for your browser!");
+    }
+    //TODO: disable geolocation button
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+        //TODO: re-enable geolocation button
+        socket.emit('createLocationMessage', {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+        })
+    }, function() {
+        //TODO: re-enable geolocation button
+        alert("Geolocation is not supported for your browser!");        
+    });
+});
 
 function renderMessage(message) {
     var html = $('#messages').html();
