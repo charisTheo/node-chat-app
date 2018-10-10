@@ -1,0 +1,31 @@
+@media only screen and (min-width: 319px) {
+    /* .container  {
+
+    } */
+}
+@media only screen and (min-width: 479px) {
+    /* .container  {
+
+    } */
+}
+@media only screen and (min-width: 767px) {
+    .container  {
+        max-width: 70vw;
+        margin: 0 auto;
+        box-shadow: 0 0 11px 5px rgba(0,0,0,0.45);
+        -o-box-shadow: 0 0 11px 5px rgba(0,0,0,0.45);
+        -ms-box-shadow: 0 0 11px 5px rgba(0,0,0,0.45);
+        -moz-box-shadow: 0 0 11px 5px rgba(0,0,0,0.45);
+        -webkit-box-shadow: 0 0 11px 5px rgba(0,0,0,0.45);
+    }
+}
+@media only screen and (min-width: 959px) {
+    .container  {
+        max-width: 50vw;
+    }
+}
+@media only screen and (min-width: 1439px) {
+    /* .container  {
+
+    } */
+}

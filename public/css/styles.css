@@ -257,26 +257,31 @@ select:-webkit-autofill:focus {
 
 #green + label {
     background-color: #76ff03;
+    border: 1px inset #32cb00;
     /* light #b0ff57 */
     /* dark #32cb00 */
 }
 #purple + label {
     background-color: #aa00ff;
+    border: 1px inset #7200ca;
     /* light #e254ff */
     /* dark #7200ca */
 }
 #blue + label {
     background-color: #1976d2;
+    border: 1px inset #004ba0;
     /* light #63a4ff */
     /* dark #004ba0 */
 }
 #orange + label {
     background-color: #ff3d00;
+    border: 1px inset #c30000;
     /* light #ff7539 */
     /* dark #c30000 */
 }
 #red + label {
     background-color: #d50000;
+    border: 1px inset #9b0000;
     /* light #ff5131 */
     /* dark #9b0000 */
 }
@@ -284,6 +289,9 @@ select:-webkit-autofill:focus {
 
 /* THEMES */
 /* -------------------------------GREEN----------------------- */
+body.green {
+    background-color: #258f02;
+}
 body.green .container,
 body.green .btn-3d:active {
     color: #b0ff57;
@@ -311,6 +319,9 @@ body.green .md-content {
 }
 
 /* -------------------------------PURPLE----------------------- */
+body.purple {
+    background-color: #48027e;
+}
 body.purple .container,
 body.purple .btn-3d:active {
     color: #e254ff;
@@ -339,6 +350,9 @@ body.purple .md-content {
 
 
 /* -------------------------------BLUE----------------------- */
+body.blue {
+    background-color: #002a5a;
+}
 body.blue .container,
 body.blue .btn-3d:active {
     color: #63a4ff;
@@ -367,6 +381,9 @@ body.blue .md-content {
 
 
 /* -------------------------------ORANGE----------------------- */
+body.orange {
+    background-color: #7e0101;
+}
 body.orange .container,
 body.orange .btn-3d:active {
     color: #ff7539;
@@ -394,6 +411,9 @@ body.orange .md-content {
 }
 
 /* -------------------------------RED----------------------- */
+body.red {
+    background-color: #530000;
+}
 body.red .container,
 body.red .btn-3d:active {
     color: #ff5131;

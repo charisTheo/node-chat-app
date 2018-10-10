@@ -6,9 +6,9 @@ describe('generateMessage', () => {
         var from = "someone@example.com";
         var text = "Hello there";
         var message = generateMessage(from, text);
-        expect(message.createdAt).toBeA('number');
+        expect(typeof message.createdAt).toBe('number');
         // expect(message.from).toBe(from);
         // expect(message.text).toBe(text);
-        expect(message).toInclude({from, text});
+        expect(message).toMatchObject({from, text});
     });
 });
