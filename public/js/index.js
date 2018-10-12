@@ -79,10 +79,12 @@ locationButton.addEventListener("click", function() {
     if (!navigator.geolocation) {
         return alert("Geolocation is not supported for your browser!");
     }
-    //TODO: disable geolocation button
+    // disable geolocation button
+    $('#send-location').attr("disabled", true); 
 
     navigator.geolocation.getCurrentPosition(function(position) {
-        //TODO: re-enable geolocation button
+        // re-enable geolocation button
+        $('#send-location').attr("disabled", false); 
         socket.emit('createLocationMessage', {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude

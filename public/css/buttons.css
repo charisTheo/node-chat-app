@@ -11,6 +11,13 @@ a:focus {
     text-decoration: none;
 }
 
+#send-location {
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    padding: 0;
+}
+
 
 .btn-3d {
     background-color: #e254ff;
