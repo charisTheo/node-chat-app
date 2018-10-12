@@ -32,12 +32,12 @@ $('#stickerSearch').on("click", function(e) {
 });
 function toggleGifSearch(bool) {
     if (bool) {
-        $('#stickerSearch').css("opacity", "1");
+        $('#stickerSearch').css({"opacity": 1, "font-size": "larger"});
         $('div#searchResults').addClass("open");        
         $('#toggleStickerSearch').prop("checked", false);
         $('#removeInputBtn').show()
     } else {        
-        $('#stickerSearch').css("opacity", "0.7");        
+        $('#stickerSearch').css({"opacity": 0.6, "font-size": "initial"});        
         $('#toggleStickerSearch').prop("checked", true);        
         $('#inputMessage').attr("placeholder", "type message here...")
                     .val("")

@@ -5,7 +5,7 @@ $('#jet-smoke').hide();
 
 $(document).ready(function(){
     $('#inputMessage').focus();
-    var colorPref = window.localStorage.getItem("color-preference") || undefined;
+    let colorPref = window.localStorage.getItem("color-preference") || undefined;
     if (colorPref) {
         $(`#${colorPref}`).click();
     }
@@ -16,7 +16,7 @@ socket.on('newMessage', function(message){
 });
 
 socket.on("activeUsers", function (message) {
-    var activeMembers = $('.active-members').html();
+    let activeMembers = $('.active-members').html();
     message.users.forEach(user => {
         activeMembers += `<p class="${user}"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>${user}</p>`;
     });
@@ -51,7 +51,7 @@ socket.on('newLocationMessage', function(message) {
 //on sending message
 $('#messageForm').on("submit", function(e){
     e.preventDefault();
-    var mes = this.elements["message"].value.toString();
+    let mes = this.elements["message"].value.toString();
     if (mes == "") {
         return;
     }
@@ -63,8 +63,8 @@ $('#messageForm').on("submit", function(e){
     // start animation from sendSvgAnim.js
     createJets(); 
     $('#jet-smoke').show("fast")
-                .delay(1000)
-                .hide("fast")
+        .delay(1000)
+        .hide("fast");
                 
     socket.emit("createMessage", {
         from: username,
@@ -96,9 +96,12 @@ locationButton.addEventListener("click", function() {
 });
 
 function renderMessage(message) {
-    var html = $('#messages').html();
-    html += `<br> <span class='createdAt'>${message.createdAt}</span> <strong>${message.from.toString()}</strong>: <span class="message">${message.text.toString()}</span><br>`;
-    $('#messages').html(html)
+    let template = $('#message-template').html();
+    let html = Mustache.render(template, {
+        // createdAt, from, text
+        ...message
+    });
+    $('#messages').append(html);
 
     //scroll to bottom of page
     $("html, body").animate({ scrollTop: $(document).height() }, "slow");
@@ -115,10 +118,10 @@ $('#addUsername').on("submit", function(e){
     socket.emit("newUser", {name: username});
 });
 
-var previousColor;
+let previousColor;
 $("input[type='radio']").on("click", function(e) {
     e.preventDefault();
-    var color = $(this).val();
+    let color = $(this).val();
     $(document.body).removeClass(previousColor);
     $(document.body).addClass(color); 
     
@@ -144,6 +147,6 @@ if ($('#inputMessage').val() == "") {
 
 //add listener on #selectColor to store color preference in local storage
 $('#selectColor label').on("click", function(e) {
-    var colorPreference = e.target.getAttribute("for");
+    let colorPreference = e.target.getAttribute("for");
     window.localStorage.setItem("color-preference", colorPreference);
 });

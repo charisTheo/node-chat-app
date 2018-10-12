@@ -7,7 +7,12 @@ let radii = [];
 let flag = false;
 mainTimeline.timeScale(2);
 
-function createJets(){
+function createJets() {
+  // to cancel out the effect of runnning many times
+  // void jetBubbles.offsetWidth;
+  // void jet.offsetWidth;
+  // void shakeGroup;
+
   TweenMax.to(jet, 0.05, {
       x:'+=4',
       repeat:9, 

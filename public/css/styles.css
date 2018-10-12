@@ -172,15 +172,20 @@ form#messageForm {
     position: relative;
 }
 #stickerSearch {
+    -webkit-transition: all 0.5;
+    -moz-transition: all 0.5;
+    -o-transition: all 0.5;
+    transition: all 0.5;
     color: #7200ca;
     position: absolute;
     left: 0;
-    padding: 10px 5px;
-    opacity: 0.7;
+    padding: 9px 5px;
+    opacity: 0.6;
 }
 input#toggleStickerSearch {
     display: none;
 }
+
 #jet-container {
     max-width: 115px;
     min-width: 55px;
@@ -207,15 +212,29 @@ input#submit {
 }
 #removeInputBtn {
     position: absolute;
-    right: 4em;
+    right: 5em;
     padding: 10px 0;
 }
-span.createdAt {
-    font-size: 0.8em;
-    margin: 10px 0px;
+
+.message {
+    margin: 15px 0px;
+    text-align: left; 
+}
+.message .message-details {
     display: inline-block;
 }
-span.message {
+.message .message-details .message-createdAt, 
+.message .message-details strong {
+    display: block;
+    text-align: left;
+}
+.message .message-details strong {
+    color: #fff;
+}
+.message .message-createdAt {
+    font-size: 0.8em;
+}
+.message .message-text {
     border-radius: 4px;
     background-color: #fff;
     box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.75);

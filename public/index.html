@@ -140,6 +140,16 @@
         </form>
     </div>
 
+    <script id="message-template" type="text/template">
+        <div class="message">
+            <div class="message-details">
+                <strong>{{from}}</strong>
+                <span class='message-createdAt'>{{createdAt}}</span> 
+            </div>
+            <span class="message-text">{{text}}</span>
+        </div>
+    </script>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/jquery-3.2.1.js"></script>
     <script src="./js/jquery-ui.js"></script>
@@ -151,6 +161,7 @@
     <script src="./js/modalEffects.js"></script>
     <script src="./js/stickerSearch.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/mustache.js"></script>
 </body>
 
 </html>
