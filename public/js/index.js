@@ -97,7 +97,7 @@ locationButton.addEventListener("click", function() {
 
 function renderMessage(message) {
     var html = $('#messages').html();
-    html += "<br> <strong>" + message.from.toString() + "</strong>:  " + message.text.toString() + "<br>";
+    html += `<br> <span class='createdAt'>${message.createdAt}</span> <strong>${message.from.toString()}</strong>: <span class="message">${message.text.toString()}</span><br>`;
     $('#messages').html(html)
 
     //scroll to bottom of page

@@ -2,7 +2,7 @@ let generateMessage = (from, text) => {
     return {
         from,
         text,
-        createdAt: new Date().toLocaleDateString('en-GB', {weekday: 'long', hour: 'numeric', minute: 'numeric' })   // "Friday 16:36"
+        createdAt: new Date().toLocaleDateString('en-GB', {weekday: 'short', hour: 'numeric', minute: 'numeric' })   // "Fri 16:36"
     };
 };
 

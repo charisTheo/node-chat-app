@@ -210,6 +210,19 @@ input#submit {
     right: 4em;
     padding: 10px 0;
 }
+span.createdAt {
+    font-size: 0.8em;
+    margin: 10px 0px;
+    display: inline-block;
+}
+span.message {
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.75);
+    padding: 8px 12px;
+    margin: 0px 5px;
+}
+
 
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
