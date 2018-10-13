@@ -1,5 +1,5 @@
 let jetBubbles = document.getElementsByClassName('jetBubble');
-let jet = document.getElementById('submit');
+let jet = document.getElementById('message-submit');
 let shakeGroup = document.querySelector('.shakeGroup');
 let mainTimeline = new TimelineMax({repeat:-1}).seek(100);
 let mainSpeedLinesTimeline = new TimelineMax({repeat:-1, paused:false});

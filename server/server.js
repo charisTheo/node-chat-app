@@ -23,14 +23,14 @@ io.on('connection', (socket) => {
 
     socket.on('userConnected', (message) => {
         users.push(message.user);
-        socket.broadcast.emit("activeUsers", {users: users.unique()});
+        // socket.broadcast.emit("activeUsers", {users: users.unique()});
     });
     
     socket.on("newUser", (message) => {
         //check for duplicates in nicknames
         socket.nickname = message.name;
         users.push(socket.nickname);
-        socket.emit("newMessage", generateMessage("Server", `Welcome ${message.name}!`));
+        socket.emit("newMessage", generateMessage("Server", `${message.name} is live`));
         socket.broadcast.emit("newMessage", generateMessage("Server", message.name + " has joined the group!"));
     });
 

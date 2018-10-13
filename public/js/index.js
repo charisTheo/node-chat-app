@@ -1,5 +1,6 @@
 let socket = io();
 let username = window.localStorage.getItem("username") || "";
+let $messageForm = $('#messageForm');
 
 $('#jet-smoke').hide();
 
@@ -16,20 +17,15 @@ $(document).ready(function(){
 socket.on('newMessage', function(message){
     renderMessage(message);
 });
-
-socket.on("activeUsers", function (message) {
-    // TODO: do something if necessary or remove
-});
 socket.on("inactiveUser", function(message) {
     // console.log(message);
     $(`p.${message.user}`).remove();
 });
-
 socket.on('connect', function() {    
     if (username == "") {
         showPopup();
     } else {
-        socket.emit("createMessage", {from: "Server", text: `Welcome back ${username}!`});
+        // socket.emit("createMessage", {from: "Server", text: `Welcome back ${username}!`});
         socket.emit('userConnected', {user: username});
     }
 });
@@ -46,33 +42,9 @@ socket.on('newLocationMessage', function(message) {
     window.open(message.url, '_blank');
 });
 
-//on sending message
-$('#messageForm').on("submit", function(e){
-    e.preventDefault();
-    let mes = this.elements["message"].value.toString();
-    if (mes == "") {
-        return;
-    }
-
-    if (username == "") {
-        return showPopup();
-    }
-
-    // start animation from sendSvgAnim.js
-    createJets(); 
-    $('#jet-smoke').show("fast")
-        .delay(1000)
-        .hide("fast");
-                
-    socket.emit("createMessage", {
-        from: username,
-        text: mes
-    });
-    $('#inputMessage').val("");
-});
+//-----------------------------End of sockets-----------------------
 
 let locationButton = document.getElementById('send-location');
-
 locationButton.addEventListener("click", function() {
     if (!navigator.geolocation) {
         return alert("Geolocation is not supported for your browser!");
@@ -153,7 +125,7 @@ $('#removeInputBtn').on("click", function(e) {
     $(this).hide("slow");
 });
 
-$('#inputMessage').keyup(function() {
+$('#inputMessage').keyup(function(e) {
     if ($(this).val() != "") {
         $('#removeInputBtn').show("slow");
     } else {
@@ -161,7 +133,7 @@ $('#inputMessage').keyup(function() {
     }
 });
 if ($('#inputMessage').val() == "") {
-    $('#removeInputBtn').hide("slow");    
+    $('#removeInputBtn').hide("slow");
 }
 
 //add listener on #selectColor to store color preference in local storage
@@ -169,3 +141,38 @@ $('#selectColor label').on("click", function(e) {
     let colorPreference = e.target.getAttribute("for");
     window.localStorage.setItem("color-preference", colorPreference);
 });
+
+
+$('#inputMessage').keypress(function(e) {
+    // if enter is pressed on mobile
+    if (e.keyCode == 13 || e.key == 'Enter') {
+        // fix for: form is not submitted from mobile
+        messageFormSubmitHandler();
+    }
+});
+$('#messageForm').submit(function(event){
+    event.preventDefault();
+    messageFormSubmitHandler();
+    $('#removeInputBtn').hide("slow");  // fix for: when form submitted from submit input button 
+});
+function messageFormSubmitHandler() {
+    let mes = $messageForm.find("input[name=message]").val();
+    
+    if (mes == "") {
+        return;
+    }
+    if (username == "") {
+        return showPopup();
+    }
+    // start animation from sendSvgAnim.js
+    createJets(); 
+    $('#jet-smoke').show("fast")
+        .delay(1000)
+        .hide("fast");
+                
+    socket.emit("createMessage", {
+        from: username,
+        text: mes
+    });
+    $('#inputMessage').val("");
+}
