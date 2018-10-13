@@ -108,17 +108,11 @@ strong {
     flex-flow: wrap;
     justify-content: space-between;
 }
-.active-members p {
-    display: inline-block;
-    margin: 0;
-    font-size: 0.8em;
-    font-weight: bolder;
-}
 .active-members i{
-    color: #00e676;
-    border-radius: 50%;
-    box-shadow: 0px 0 2px 2px rgba(0,0,0,0.6);
-    margin-right: 10px;
+    display: inline-block;
+    font-weight: bolder;
+    /* color: #00e676; */
+    color: #48027e;
 }
 #messages {
     height: 60vh;
@@ -131,11 +125,6 @@ strong {
     border-radius: 5px;
     padding: 15px;
     text-align: left;
-}
-i.closeResultsBtn {
-    position: absolute;
-    right: 4em;
-    padding: 10px 0;
 }
 input {
     border-radius: 5px;
@@ -211,11 +200,13 @@ input#submit {
     z-index: 2;
 }
 #removeInputBtn {
+    cursor: pointer;
     position: absolute;
-    right: 5em;
-    padding: 10px 0;
+    right: 6em;
+    background: none;
+    color: #d50000;
+    padding: 4px;
 }
-
 .message {
     margin: 15px 0px;
     text-align: left; 
@@ -326,8 +317,9 @@ body.green {
     background-color: #258f02;
 }
 body.green .container,
+body.green .active-members i,
 body.green .btn-3d:active {
-    color: #b0ff57;
+    color: #258f02;
     background-color: #76ff03;
 }
 body.green #messages,
@@ -336,8 +328,7 @@ body.green #modal-19 .perspective button.btn-3d:hover,
 body.green .btn-3d::after {
     background-color: #32cb00;
 }
-body.green #stickerSearch,
-body.green .active-members p {
+body.green #stickerSearch {
     color: #32cb00;
 }
 body.green .btn-3d,
@@ -356,8 +347,9 @@ body.purple {
     background-color: #48027e;
 }
 body.purple .container,
+body.purple .active-members i,
 body.purple .btn-3d:active {
-    color: #e254ff;
+    color: #48027e;
     background-color: #aa00ff;
 }
 body.purple #messages,
@@ -366,8 +358,7 @@ body.purple #modal-19 .perspective button.btn-3d:hover,
 body.purple .btn-3d::after {
     background-color: #7200ca;
 }
-body.purple #stickerSearch,
-body.purple .active-members p{
+body.purple #stickerSearch {
     color: #7200ca;
 }
 body.purple .btn-3d,
@@ -387,8 +378,9 @@ body.blue {
     background-color: #002a5a;
 }
 body.blue .container,
+body.blue .active-members i,
 body.blue .btn-3d:active {
-    color: #63a4ff;
+    color: #002a5a;
     background-color: #1976d2;
 }
 body.blue #messages,
@@ -397,8 +389,7 @@ body.blue #modal-19 .perspective button.btn-3d:hover,
 body.blue .btn-3d::after  {
     background-color: #004ba0;
 }
-body.blue #stickerSearch,
-body.blue .active-members p{
+body.blue #stickerSearch {
     color: #004ba0;
 }
 body.blue .btn-3d,
@@ -418,8 +409,9 @@ body.orange {
     background-color: #7e0101;
 }
 body.orange .container,
+body.orange .active-members i,
 body.orange .btn-3d:active {
-    color: #ff7539;
+    color: #7e0101;
     background-color: #ff3d00;
 }
 body.orange #messages,
@@ -428,8 +420,7 @@ body.orange #modal-19 .perspective button.btn-3d:hover,
 body.orange .btn-3d::after {
     background-color: #c30000;
 }
-body.orange #stickerSearch,
-body.orange .active-members p{
+body.orange #stickerSearch {
     color: #c30000;
 }
 body.orange .btn-3d,
@@ -448,8 +439,9 @@ body.red {
     background-color: #530000;
 }
 body.red .container,
+body.red .active-members i,
 body.red .btn-3d:active {
-    color: #ff5131;
+    color: #530000;
     background-color: #d50000;
 }
 body.red #messages,
@@ -458,8 +450,7 @@ body.red #modal-19 .perspective button.btn-3d:hover,
 body.red .btn-3d::after {
     background-color: #9b0000;
 }
-body.red #stickerSearch,
-body.red .active-members p{
+body.red #stickerSearch {
     color: #9b0000;
 }
 body.red .btn-3d,

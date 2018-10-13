@@ -9,6 +9,8 @@ $(document).ready(function(){
     if (colorPref) {
         $(`#${colorPref}`).click();
     }
+    // render user's username
+    if (username) addNewUserName(username);
 });
 
 socket.on('newMessage', function(message){
@@ -16,11 +18,7 @@ socket.on('newMessage', function(message){
 });
 
 socket.on("activeUsers", function (message) {
-    let activeMembers = $('.active-members').html();
-    message.users.forEach(user => {
-        activeMembers += `<p class="${user}"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>${user}</p>`;
-    });
-    $('.active-members').html(activeMembers);
+    // TODO: do something if necessary or remove
 });
 socket.on("inactiveUser", function(message) {
     // console.log(message);
@@ -113,10 +111,31 @@ function showPopup() {
 
 $('#addUsername').on("submit", function(e){
     e.preventDefault();
-    username = $('#username').val();
-    window.localStorage.setItem("username", username);
-    socket.emit("newUser", {name: username});
+    const newUserName = $('#username').val();
+    // return if unchanged
+    if (newUserName === username) return;
+    let userExists = document.getElementById(newUserName) ? true : false;
+    // check if username already exists
+    if (userExists) {
+        return alert("The name " + newUserName + " is already taken :/");
+    } else {
+        // else remove previous username
+        document.getElementById(username).remove();
+    }
+    addNewUserName(newUserName);
 });
+
+function addNewUserName(_newUserName) {
+    username = _newUserName; // save new username in current process memory
+    window.localStorage.setItem("username", _newUserName); // save new username in local storage
+    socket.emit("newUser", {name: _newUserName});
+    // render user
+    // TODO: use mustache
+    let userIcons = ["astronaut", "ninja", "tie", "secret"];
+    let i = Math.floor(Math.random() * 4);
+    let newUser = `<i id="${_newUserName}" class="fas fa-user-${userIcons[i]}">  ${_newUserName}</i>`;
+    $('.active-members').append(newUser);
+}
 
 let previousColor;
 $("input[type='radio']").on("click", function(e) {

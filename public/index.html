@@ -13,15 +13,20 @@
     <meta property="og:site_name" content="Web chat app" />
     <meta property="og:description" content="A web chat app"/>
     <meta property="og:url" content="https://web-app-chat.herokuapp.com/"/>
+    
+    <!--Google fonts Plugin-->
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Jura|Advent+Pro" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Days+One|Exo+2|Montserrat|Titillium+Web:700" rel="stylesheet">  -->
+
+    <!--Font Awesome Plugin-->
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">  -->
 
     <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/media-queries.css">
-    <!-- FontAwesome Plugin -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!--Google fonts Plugin-->
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Jura|Advent+Pro" rel="stylesheet">
 </head>
 
 <body>
@@ -43,14 +48,15 @@
 
     <div class="container">
         <button class="btn-3d" id="send-location">
-            <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+            <i class="fas fa-map-marker fa-lg" aria-hidden="true"></i>
         </button>
 
         <div id="searchResults"></div>
         <h3 id="welcomeMessage">Say something brilliant!</h3>
 
         <div class="active-members">
-            <p><i class="fa fa-dot-circle-o" aria-hidden="true"></i>theBest</p>
+            <!-- <p><i class="fas fa-user-ninja"></i>theBest</p> -->
+            
         </div>
 
         <p class="perspective">
@@ -73,19 +79,18 @@
             <label for="red"></label>
         </div>
         <div id="messages">
-            <strong>
-                <u>Conversation</u>
-            </strong>
-            </br>
+            <!-- rendering messages container by mustache -->
         </div>
 
         <form id="messageForm">
             <label id="stickerSearch" for="toggleStickerSearch">
-                <i class="fa fa-rocket" aria-hidden="true"></i>
+                <i class="fas fa-rocket" aria-hidden="true"></i>
             </label>
             <input id="toggleStickerSearch" type="checkbox" checked>
             <input name="message" id="inputMessage" type="text" placeholder="type message here..." autocomplete="off">
-            <i class="fa fa-close" id="removeInputBtn" aria-hidden="true"></i>
+            <button id="removeInputBtn">
+                <i class="fas fa-times-circle fa-2x" aria-hidden="true"></i>
+            </button>
 
             <div id="jet-container">
                 <svg id="jet-smoke" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="50"
