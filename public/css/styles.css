@@ -229,6 +229,7 @@ input#inputMessage {
     padding: 6px 10px;
     margin: 0px 5px;
     font-size: 0.8em;
+    display: inline-block;
 }
 
 

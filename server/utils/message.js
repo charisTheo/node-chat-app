@@ -5,7 +5,13 @@ let generateMessage = (from, text) => {
         createdAt: new Date().toLocaleDateString('en-GB', {weekday: 'short', hour: 'numeric', minute: 'numeric' })   // "Fri 16:36"
     };
 };
-
+let generateImageMessage = (from, url) => {
+    return {
+        from,
+        url,
+        createdAt: new Date().toLocaleDateString('en-GB', {weekday: 'short', hour: 'numeric', minute: 'numeric' })   // "Fri 16:36"
+    };
+};
 let generateLocationMessage = (from, lat, lng) => {
     return {
         from,
@@ -14,4 +20,4 @@ let generateLocationMessage = (from, lat, lng) => {
     };
 };
 
-module.exports = {generateMessage, generateLocationMessage};
+module.exports = {generateMessage, generateImageMessage, generateLocationMessage};

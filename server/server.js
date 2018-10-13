@@ -1,18 +1,32 @@
 const path = require('path');
 const http = require('http');
 const express = require('express'); 
+const cookieParser = require('cookie-parser');
 const socketIO = require('socket.io');
-const {generateMessage, generateLocationMessage} = require('./utils/message');
+const {generateMessage, generateImageMessage, generateLocationMessage} = require('./utils/message');
 const publicPath = path.join(__dirname, "/../public");
 const PORT = process.env.PORT || 3000;
 
-var app = express();
-app.use(express.static(publicPath));
-var server = http.createServer(app);
-var io = socketIO(server);
+let app = express();
+// app.use(express.static(publicPath));
+let server = http.createServer(app);
+let io = socketIO(server);
+let protocol;
 
+if (process.env.NODE_ENV == 'production') {
+    protocol = 'https';
+} else {
+    protocol = 'http';
+}
 
-var users = [];
+// set the protocol by cookie to make the calls to Giphy accordingly    
+app.use(express.static(publicPath, {
+    setHeaders: function (res, path, stat) {
+        res.set('Set-Cookie', `protocol=${protocol};Path=/`)
+    }
+}));
+
+let users = [];
 Array.prototype.unique = function() {
     return this.filter(function (value, index, self) { 
         return self.indexOf(value) === index;
@@ -37,6 +51,11 @@ io.on('connection', (socket) => {
     socket.on("createMessage", (message) => {
         io.emit("newMessage", generateMessage(message.from, message.text));
     });
+
+    socket.on("newImage", (message) => {
+        io.emit("renderImage", generateImageMessage(message.from, message.url));
+    });
+    
 
     socket.on('userDisconnected', (message) => {
         //pass the users name to delete his name from .active-members

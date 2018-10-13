@@ -17,6 +17,9 @@ $(document).ready(function(){
 socket.on('newMessage', function(message){
     renderMessage(message);
 });
+socket.on("renderImage", function(message) {
+    renderImage(message);
+});
 socket.on("inactiveUser", function(message) {
     // console.log(message);
     $(`p.${message.user}`).remove();
@@ -29,7 +32,6 @@ socket.on('connect', function() {
         socket.emit('userConnected', {user: username});
     }
 });
-
 socket.on('disconnect', function() {
     socket.emit('createMessage', {
         from: "Server",
@@ -37,7 +39,6 @@ socket.on('disconnect', function() {
     });
     socket.emit("userDisconnected", {user: username});
 });
-
 socket.on('newLocationMessage', function(message) {
     window.open(message.url, '_blank');
 });
@@ -77,36 +78,20 @@ function renderMessage(message) {
     $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 }
 
-function showPopup() {
-    $('.md-trigger').click();
+function renderImage(message) {    
+    let template = $('#image-message-template').html();
+    let html = Mustache.render(template, {
+        // createdAt, from, url
+        ...message
+    });
+    $('#messages').append(html);
+
+    //scroll to bottom of page
+    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 }
 
-$('#addUsername').on("submit", function(e){
-    e.preventDefault();
-    const newUserName = $('#username').val();
-    // return if unchanged
-    if (newUserName === username) return;
-    let userExists = document.getElementById(newUserName) ? true : false;
-    // check if username already exists
-    if (userExists) {
-        return alert("The name " + newUserName + " is already taken :/");
-    } else {
-        // else remove previous username
-        document.getElementById(username).remove();
-    }
-    addNewUserName(newUserName);
-});
-
-function addNewUserName(_newUserName) {
-    username = _newUserName; // save new username in current process memory
-    window.localStorage.setItem("username", _newUserName); // save new username in local storage
-    socket.emit("newUser", {name: _newUserName});
-    // render user
-    // TODO: use mustache
-    let userIcons = ["astronaut", "ninja", "tie", "secret"];
-    let i = Math.floor(Math.random() * 4);
-    let newUser = `<i id="${_newUserName}" class="fas fa-user-${userIcons[i]}">  ${_newUserName}</i>`;
-    $('.active-members').append(newUser);
+function showPopup() {
+    $('.md-trigger').click();
 }
 
 let previousColor;
@@ -143,6 +128,8 @@ $('#selectColor label').on("click", function(e) {
 });
 
 
+// SUBMIT HANDLERS
+
 $('#inputMessage').keypress(function(e) {
     // if enter is pressed on mobile
     if (e.keyCode == 13 || e.key == 'Enter') {
@@ -175,4 +162,34 @@ function messageFormSubmitHandler() {
         text: mes
     });
     $('#inputMessage').val("");
+}
+
+
+// addUsername
+
+$('#addUsername').on("submit", function(e){
+    e.preventDefault();
+    const newUserName = $('#username').val();
+    // return if unchanged
+    if (newUserName === username) return;
+    let userExists = document.getElementById(newUserName) ? true : false;
+    // check if username already exists
+    if (userExists) {
+        return alert("The name " + newUserName + " is already taken :/");
+    } else {
+        // else remove previous username
+        document.getElementById(username).remove();
+    }
+    addNewUserName(newUserName);
+});
+function addNewUserName(_newUserName) {
+    username = _newUserName; // save new username in current process memory
+    window.localStorage.setItem("username", _newUserName); // save new username in local storage
+    socket.emit("newUser", {name: _newUserName});
+    // render user
+    // TODO: use mustache
+    let userIcons = ["astronaut", "ninja", "tie", "secret"];
+    let i = Math.floor(Math.random() * 4);
+    let newUser = `<i id="${_newUserName}" class="fas fa-user-${userIcons[i]}">  ${_newUserName}</i>`;
+    $('.active-members').append(newUser);
 }
