@@ -43,3 +43,20 @@ function scrollToBottom() {
         $messages.animate({ scrollTop: scrollHeight }, "slow");
     }
 }
+
+function setInputPlaceholder() {
+    const phrases = [
+        "I love everyone", 
+        "You make me laugh", 
+        "I am feeling great today", 
+        "How can I help you?", 
+        "I'm listening", 
+        "You are right", 
+        "I understand what you say", 
+        "How do you feel about that?",
+        "Thanks for sharing",
+        "You are all brilliant people"
+    ];
+    let i = Math.floor(Math.random() * phrases.length - 1);
+    $('#inputMessage').attr("placeholder", phrases[i]);
+}

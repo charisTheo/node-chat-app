@@ -1,0 +1,16 @@
+body {
+    background-color: #48027e;
+}
+.flex-justify-center {
+    justify-content: center;
+    color: #fff;
+}
+.form-container {
+    margin-top: 30px;
+}
+.form-container .form-field {
+    text-align: right;
+    width: 80vw;
+    max-width: 300px;
+    margin: 10px auto;
+}

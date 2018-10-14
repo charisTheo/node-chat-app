@@ -165,7 +165,7 @@ function addNewUserName(_newUserName) {
     // render user
     // TODO: use mustache
     let userIcons = ["astronaut", "ninja", "tie", "secret"];
-    let i = Math.floor(Math.random() * 4);
+    let i = Math.floor(Math.random() * userIcons.length - 1);
     let newUser = `<i id="${_newUserName}" class="fas fa-user-${userIcons[i]}">  <span>${_newUserName}</span></i>`;
     $('.active-members').append(newUser);
 }

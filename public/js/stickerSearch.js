@@ -8,7 +8,7 @@ $('#stickerSearch').on("click", function(e) {
     e.preventDefault();
     if ($('#toggleStickerSearch:checked').length) {
         toggleGifSearch(true);
-        $('#inputMessage').attr("placeholder", "search stickers");
+        $('#inputMessage').attr("placeholder", "GIF search");
         $('#inputMessage').on("input", getGifs);
     } else {
         toggleGifSearch(false);
@@ -42,7 +42,6 @@ function toggleGifSearch(bool) {
         $('#stickerSearch').css({"opacity": 0.6, "font-size": "initial"});        
         $('#toggleStickerSearch').prop("checked", true);        
         $('#inputMessage')
-            .attr("placeholder", "type message here...")
             .val("")
             .off("input", "#inputMessage", getGifs);    // remove event listener
         $('#searchResults').removeClass("open")

@@ -1,0 +1,252 @@
+#green,
+#purple,
+#blue,
+#orange,
+#red {
+    outline: none;
+    display: none;
+}
+
+#selectColor label {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#green:active,
+#green:focus,
+#purple:active,
+#purple:focus,
+#blue:active,
+#blue:focus,
+#orange:active,
+#orange:focus,
+#red:active,
+#red:focus {
+    outline: none;
+}
+
+
+#green + label {
+    background-color: #76ff03;
+    border: 1px inset #32cb00;
+    /* light #b0ff57 */
+    /* dark #32cb00 */
+}
+#purple + label {
+    background-color: #aa00ff;
+    border: 1px inset #7200ca;
+    /* light #e254ff */
+    /* dark #7200ca */
+}
+#blue + label {
+    background-color: #1976d2;
+    border: 1px inset #004ba0;
+    /* light #63a4ff */
+    /* dark #004ba0 */
+}
+#orange + label {
+    background-color: #ff3d00;
+    border: 1px inset #c30000;
+    /* light #ff7539 */
+    /* dark #c30000 */
+}
+#red + label {
+    background-color: #d50000;
+    border: 1px inset #9b0000;
+    /* light #ff5131 */
+    /* dark #9b0000 */
+}
+
+
+/* THEMES */
+/* -------------------------------GREEN----------------------- */
+body.green {
+    background-color: #258f02;
+}
+body.green .container,
+body.green .active-members i,
+body.green .btn-3d:active {
+    color: #258f02;
+    background-color: #76ff03;
+}
+body.green #messages,
+body.green #modal-19 .perspective button.btn-3d:focus,
+body.green #modal-19 .perspective button.btn-3d:hover,
+body.green .btn-3d::after {
+    background-color: #32cb00;
+}
+body.green #stickerSearch {
+    color: #32cb00;
+}
+body.green .btn-3d,
+body.green .btn-3d:hover, .btn-3d:focus {
+    background-color: #b0ff57;
+}
+body.green .md-overlay {
+    background: rgba(50, 203, 0, 0.8);
+}
+body.green .md-content {
+    background-color: #76ff03;
+}
+
+/* -------------------------------PURPLE----------------------- */
+body.purple {
+    background-color: #48027e;
+}
+body.purple .container,
+body.purple .active-members i,
+body.purple .btn-3d:active {
+    color: #48027e;
+    background-color: #aa00ff;
+}
+body.purple #messages,
+body.purple #modal-19 .perspective button.btn-3d:focus,
+body.purple #modal-19 .perspective button.btn-3d:hover,
+body.purple .btn-3d::after {
+    background-color: #7200ca;
+}
+body.purple #stickerSearch {
+    color: #7200ca;
+}
+body.purple .btn-3d,
+body.purple .btn-3d:hover, .btn-3d:focus {
+    background-color: #e254ff;
+}
+body.purple .md-overlay {
+    background: rgba(114, 0, 202, 0.8);
+}
+body.purple .md-content {
+    background-color: #aa00ff;
+}
+
+
+/* -------------------------------BLUE----------------------- */
+body.blue {
+    background-color: #002a5a;
+}
+body.blue .container,
+body.blue .active-members i,
+body.blue .btn-3d:active {
+    color: #002a5a;
+    background-color: #1976d2;
+}
+body.blue #messages,
+body.blue #modal-19 .perspective button.btn-3d:focus,
+body.blue #modal-19 .perspective button.btn-3d:hover,
+body.blue .btn-3d::after  {
+    background-color: #004ba0;
+}
+body.blue #stickerSearch {
+    color: #004ba0;
+}
+body.blue .btn-3d,
+body.blue .btn-3d:hover, .btn-3d:focus {
+    background-color: #63a4ff;
+}
+body.blue .md-overlay {
+    background: rgba(0, 75, 160, 0.8);
+}
+body.blue .md-content {
+    background-color: #1976d2;
+}
+
+
+/* -------------------------------ORANGE----------------------- */
+body.orange {
+    background-color: #7e0101;
+}
+body.orange .container,
+body.orange .active-members i,
+body.orange .btn-3d:active {
+    color: #7e0101;
+    background-color: #ff3d00;
+}
+body.orange #messages,
+body.orange #modal-19 .perspective button.btn-3d:focus,
+body.orange #modal-19 .perspective button.btn-3d:hover,
+body.orange .btn-3d::after {
+    background-color: #c30000;
+}
+body.orange #stickerSearch {
+    color: #c30000;
+}
+body.orange .btn-3d,
+body.orange .btn-3d:hover, .btn-3d:focus {
+    background-color: #ff7539;
+}
+body.orange .md-overlay {
+    background: rgba(195, 0, 0, 0.8);
+}
+body.orange .md-content {
+    background-color: #ff3d00;
+}
+
+/* -------------------------------RED----------------------- */
+body.red {
+    background-color: #530000;
+}
+body.red .container,
+body.red .active-members i,
+body.red .btn-3d:active {
+    color: #530000;
+    background-color: #d50000;
+}
+body.red #messages,
+body.red #modal-19 .perspective button.btn-3d:focus,
+body.red #modal-19 .perspective button.btn-3d:hover,
+body.red .btn-3d::after {
+    background-color: #9b0000;
+}
+body.red #stickerSearch {
+    color: #9b0000;
+}
+body.red .btn-3d,
+body.red .btn-3d:hover, .btn-3d:focus {
+    background-color: #ff5131;
+}
+body.red .md-overlay {
+    background: rgba(155, 0, 0, 0.8);
+}
+body.red .md-content {
+    background-color: #d50000;
+}
+
+
+/* Scrollbar in Chrome*/
+*::-webkit-scrollbar {
+    width: 5px; 
+} 
+*::-webkit-scrollbar-track {
+    background-color: #04756F; 
+} 
+*::-webkit-scrollbar-thumb {
+    background: orangered; 
+} 
+/* Highlighting selection*/
+*::selection,
+*::-moz-selection {
+    background-color: transparent; 
+}
+* {
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent; 
+}
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #e254ff;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
