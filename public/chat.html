@@ -29,8 +29,8 @@
     <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/chat.css">
     <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/chat.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/media-queries.css">
 </head>
@@ -203,6 +203,19 @@
                 <a class="location-link" href="{{{url}}}" target="_blank">I am here <i class="fas fa-map-pin"></i></a>
             </span>
         </div>
+    </script>
+    <!-- USERS -->
+    <script id="users-list-template" type="text/template">
+        <ul>
+            {{#users}}
+            <li>
+                    <!-- ["astronaut", "ninja", "tie", "secret"] -->
+                <i id="{{{.}}}" class="fas fa-user-astronaut">  
+                    <span>{{.}}</span>
+                </i>
+            </li>
+            {{/users}}
+        </ul>
     </script>
 
     <script src="/socket.io/socket.io.js"></script>

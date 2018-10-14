@@ -1,3 +1,13 @@
+function updateUsersList(usersList) {   
+    // let userIcons = ["astronaut", "ninja", "tie", "secret"];
+    // let i = Math.floor(Math.random() * userIcons.length - 1);
+    let template = $('#users-list-template').html();
+    let html = Mustache.render(template, {
+        users: usersList,
+    });
+    
+    $('.active-members').html(html);
+}
 function renderMessage(message) {
     let template = $('#message-template').html();
     let html = Mustache.render(template, {
