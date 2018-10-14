@@ -6,6 +6,7 @@ function renderMessage(message) {
     });
     $('#messages').append(html);
 
+    setInputPlaceholder();
     scrollToBottom();
 }
 function renderImage(message) {    
@@ -15,7 +16,8 @@ function renderImage(message) {
         ...message
     });
     $('#messages').append(html);
-
+    
+    setInputPlaceholder();
     scrollToBottom();
 }
 function renderLocationMessage(message) {

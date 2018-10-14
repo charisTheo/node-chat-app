@@ -10,9 +10,9 @@
     <meta name="description" content="A web chat app">
     <meta name="author" content="www.github.com/charisTheo">
     <meta property="og:site_name" content="Web chat app" />
-    <meta property="og:description" content="A web chat app"/>
-    <meta property="og:url" content="https://web-app-chat.herokuapp.com/"/>
-    
+    <meta property="og:description" content="A web chat app" />
+    <meta property="og:url" content="https://web-app-chat.herokuapp.com/" />
+
     <!-- TODO: -->
     <title>Chat | ChatApp</title>
 
@@ -22,7 +22,8 @@
 
     <!--Font Awesome Plugin-->
     <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script> -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">  -->
 
     <link rel="stylesheet" href="css/buttons.css">
@@ -30,26 +31,11 @@
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/chat.css">
     <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/media-queries.css">
 </head>
 
 <body>
-    <div class="md-modal" id="modal-19">
-        <div class="md-content">
-            <h3>Hey! who are you?</h3>
-            <div>
-                <form id="addUsername">
-                    <label for="username">Insert a username:</label>
-                    <input type="text" name="username" id="username" placeholder="ex: the Greatest" required autocomplete="off" autofocus>
-                    <p class="perspective">
-                        <button type="submit" form="addUsername" class="btn-3d md-close">Done</button>
-                    </p>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="md-overlay"></div>
-
     <div class="container">
         <button class="btn-3d" id="send-location">
             <i class="fas fa-map-marker fa-lg" aria-hidden="true"></i>
@@ -90,14 +76,15 @@
                 <i class="fas fa-rocket" aria-hidden="true"></i>
             </label>
             <input id="toggleStickerSearch" type="checkbox" checked>
-            <input name="message" id="inputMessage" type="text" placeholder="I am feeling great today" autocomplete="off" autofocus>
+            <input name="message" id="inputMessage" type="text" placeholder="I am feeling great today" autocomplete="off"
+                autofocus>
             <button id="removeInputBtn">
                 <i class="fas fa-times-circle fa-2x" aria-hidden="true"></i>
             </button>
 
             <div id="jet-container">
-                <svg id="jet-smoke" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="50"
-                    width="60" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink"
+                <svg id="jet-smoke" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg"
+                    height="50" width="60" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0 0 60.000001 50.000001" xmlns:dc="http://purl.org/dc/elements/1.1/">
                     <defs id="defs5213">
                         <clipPath id="rainbowClip-3">
@@ -136,24 +123,54 @@
                             </g>
                             <use xlink:href="#badge" height="100%" width="100%" y="0" x="0" />
                         </g>
-                        <rect id="rect6970" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)" height="212.7" width="10" y="263.3"
-                            x="275" fill="#cc583f" />
-                        <rect id="rect6972" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)" height="212.7" width="10" y="263.3"
-                            x="285" fill="#ecb447" />
-                        <rect id="rect6974" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)" height="212.7" width="10" y="263.3"
-                            x="295" fill="#75c095" />
-                        <rect id="rect6976" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)" height="212.7" width="10" y="263.3"
-                            x="305" fill="#5991aa" />
-                        <rect id="rect6978" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)" height="212.7" width="10" y="263.3"
-                            x="315" fill="#7d6aad" />
-                        <rect id="rect8096" clip-path="url(#rainbowClip-5)" transform="translate(35.47 1002.7)" height="212.7" width="10" y="263.3"
-                            x="305" fill="#7204ff" />
+                        <rect id="rect6970" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)"
+                            height="212.7" width="10" y="263.3" x="275" fill="#cc583f" />
+                        <rect id="rect6972" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)"
+                            height="212.7" width="10" y="263.3" x="285" fill="#ecb447" />
+                        <rect id="rect6974" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)"
+                            height="212.7" width="10" y="263.3" x="295" fill="#75c095" />
+                        <rect id="rect6976" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)"
+                            height="212.7" width="10" y="263.3" x="305" fill="#5991aa" />
+                        <rect id="rect6978" clip-path="url(#rainbowClip-3)" transform="translate(-38.516 635.44)"
+                            height="212.7" width="10" y="263.3" x="315" fill="#7d6aad" />
+                        <rect id="rect8096" clip-path="url(#rainbowClip-5)" transform="translate(35.47 1002.7)" height="212.7"
+                            width="10" y="263.3" x="305" fill="#7204ff" />
                     </g>
                 </svg>
                 <input name="submit" id="message-submit" value=" " type="submit">
             </div>
         </form>
     </div>
+
+
+    <!-- MODALS -->
+    <div class="md-modal" id="modal-19">
+        <div class="md-content">
+            <h3 class="welcomeMessage">Welcome!</h3>
+            <h3 class="welcomeMessage">Please join a room</h3>
+
+            <div class="form-container">
+                <form action="/chat.html" id="join-form">
+                    <div class="form-field">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" placeholder="ex: a Shining Star" required
+                            autocomplete="off" autofocus>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="room">Room name:</label>
+                        <input type="text" name="room" id="room" placeholder="ex: the Dark Room" required autocomplete="on">
+                    </div>
+
+                    <p class="perspective">
+                        <button type="submit" form="join-form" class="btn-3d md-close">Done</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="md-overlay"></div>
 
     <!-- MESSAGE -->
     <script id="message-template" type="text/template">
@@ -187,11 +204,12 @@
             </span>
         </div>
     </script>
-    
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/getCookie.js"></script>
     <script src="./js/jquery-3.2.1.js"></script>
     <script src="./js/jquery-ui.js"></script>
+    <script src="./js/deparam.js"></script>
     <script src="./js/TimelineMax.js"></script>
     <script src="./js/TweenMax.js"></script>
     <script src="./js/sendSvgAnim.js"></script>
@@ -202,6 +220,7 @@
     <script src="./js/mustache.js"></script>
     <script src="./js/rendering.js"></script>
     <script src="./js/chat.js"></script>
+    <script src="./js/messageFormHandlers.js"></script>
 </body>
 
 </html>

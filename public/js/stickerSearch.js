@@ -48,6 +48,7 @@ function toggleGifSearch(bool) {
                         .empty();
         $('#removeInputBtn').hide();
     }
+    $('#inputMessage').focus();
 }
 $(document).on("click", ".giphy-gif", function(e) {
     e.preventDefault();
