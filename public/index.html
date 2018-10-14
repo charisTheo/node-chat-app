@@ -152,6 +152,7 @@
         </form>
     </div>
 
+    <!-- MESSAGE -->
     <script id="message-template" type="text/template">
         <div class="message">
             <div class="message-details">
@@ -161,6 +162,7 @@
             <span class="message-text">{{text}}</span>
         </div>
     </script>
+    <!-- IMAGE -->
     <script id="image-message-template" type="text/template">
         <div class="message">
             <div class="message-details">
@@ -168,6 +170,18 @@
                 <span class='message-createdAt'>{{createdAt}}</span> 
             </div>
             <span class="message-text"><img src="{{{url}}}" alt="a gif from giphy"></span>
+        </div>
+    </script>
+    <!-- LOCATION -->
+    <script id="location-message-template" type="text/template">
+        <div class="message">
+            <div class="message-details">
+                <strong>{{from}}</strong>
+                <span class='message-createdAt'>{{createdAt}}</span> 
+            </div>
+            <span class="message-text">
+                <a class="location-link" href="{{{url}}}" target="_blank">I am here <i class="fas fa-map-pin"></i></a>
+            </span>
         </div>
     </script>
     
@@ -182,8 +196,9 @@
     <script src="./js/cssParser.js"></script>
     <script src="./js/modalEffects.js"></script>
     <script src="./js/stickerSearch.js"></script>
-    <script src="./js/index.js"></script>
     <script src="./js/mustache.js"></script>
+    <script src="./js/rendering.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>

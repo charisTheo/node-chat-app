@@ -244,7 +244,10 @@ input#inputMessage {
     font-size: 0.8em;
     display: inline-block;
 }
-
+.message .message-text .location-link {
+    font-weight: bold;
+    color: #00bfff;
+}
 
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
