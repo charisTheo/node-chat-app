@@ -1,3 +1,6 @@
+/* #room-name {
+
+} */
 .active-members {
     display: -webkit-box;
     display: -moz-box;
@@ -7,14 +10,12 @@
     flex-flow: wrap;
     justify-content: space-between;
 }
-.active-members ul {
-    list-style: none;
-}
-.active-members ul i {
+.active-members i {
     display: inline-block;
     font-weight: bolder;
+    margin: 10px;
 }
-.active-members ul span {
+.active-members span {
     color: #48027e;
     font-family: 'Comfortaa', Helvetica, sans-serif;
 }

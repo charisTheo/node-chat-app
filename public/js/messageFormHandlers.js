@@ -45,7 +45,6 @@ function messageFormSubmitHandler() {
         .hide("fast");
                 
     socket.emit("createMessage", {
-        from: username,
         text: mes
     });
     $('#inputMessage').val("");

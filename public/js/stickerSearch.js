@@ -54,7 +54,6 @@ $(document).on("click", ".giphy-gif", function(e) {
     e.preventDefault();
     const url = $(this).find('img').attr("src");
     socket.emit("newImage", {
-        from: username,
         url: url
     });
     //close searchResults

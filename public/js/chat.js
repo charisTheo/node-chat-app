@@ -24,8 +24,10 @@ socket.on('connect', function() {
     
     socket.emit('join', params, function(err) {
         if (err) {
-            showPopup();
+            return showPopup();
         }
+        // render room name
+        $('#room-name').text(params.room);
     });
 });
 socket.on('newLocationMessage', function(message) {

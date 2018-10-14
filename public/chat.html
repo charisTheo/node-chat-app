@@ -42,7 +42,7 @@
         </button>
 
         <div id="searchResults"></div>
-        <h3 id="welcomeMessage">Say something brilliant!</h3>
+        <h3 id="room-name"></h3>
 
         <div class="active-members">
             <!-- render from mustache -->
@@ -206,16 +206,12 @@
     </script>
     <!-- USERS -->
     <script id="users-list-template" type="text/template">
-        <ul>
-            {{#users}}
-            <li>
-                    <!-- ["astronaut", "ninja", "tie", "secret"] -->
-                <i id="{{{.}}}" class="fas fa-user-astronaut">  
-                    <span>{{.}}</span>
-                </i>
-            </li>
-            {{/users}}
-        </ul>
+        {{#users}}
+                <!-- ["astronaut", "ninja", "tie", "secret"] -->
+            <i id="{{{.}}}" class="fas fa-user-astronaut">  
+                <span>{{.}}</span>
+            </i>
+        {{/users}}
     </script>
 
     <script src="/socket.io/socket.io.js"></script>

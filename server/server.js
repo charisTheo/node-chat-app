@@ -56,13 +56,13 @@ io.on('connection', (socket) => {
     });
 
     socket.on("createMessage", (message) => {
-        // TODO: send to room
-        io.emit("newMessage", generateMessage(message.from, message.text));
+        let user = users.getUser(socket.id);
+        io.to(user.room).emit("newMessage", generateMessage(user.username, message.text));
     });
 
     socket.on("newImage", (message) => {
-        // TODO: send to room
-        io.emit("renderImage", generateImageMessage(message.from, message.url));
+        let user = users.getUser(socket.id);
+        io.to(user.room).emit("renderImage", generateImageMessage(user.username, message.url));
     });
     
 
@@ -76,7 +76,8 @@ io.on('connection', (socket) => {
     });
 
     socket.on('createLocationMessage', (coords) => {
-        io.emit("newLocationMessage", generateLocationMessage('Server', coords.latitude, coords.longitude));
+        let user = users.getUser(socket.id);
+        io.to(user.room).emit("newLocationMessage", generateLocationMessage(user.username, coords.latitude, coords.longitude));
     });
 });
 
