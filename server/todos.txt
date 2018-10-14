@@ -1,2 +1,3 @@
--server giphy through https
 -use mustache template for active users
+-show active users
+-fix errors: " TweenMax.js:6983 Error: <circle> attribute r: A negative value is not valid "

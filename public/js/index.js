@@ -74,10 +74,8 @@ function renderMessage(message) {
     });
     $('#messages').append(html);
 
-    //scroll to bottom of page
-    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+    scrollToBottom();
 }
-
 function renderImage(message) {    
     let template = $('#image-message-template').html();
     let html = Mustache.render(template, {
@@ -86,10 +84,23 @@ function renderImage(message) {
     });
     $('#messages').append(html);
 
-    //scroll to bottom of page
-    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+    scrollToBottom();
 }
+function scrollToBottom() {
+    const $messages = $('#messages');
+    const $newMessage = $messages.children('div:last-child');
 
+    const clientHeight = $messages.prop("clientHeight");
+    const scrollTop = $messages.prop("scrollTop");
+    const scrollHeight = $messages.prop("scrollHeight");
+    const newMessageHeight = $newMessage.innerHeight();
+    const lastMessageHeight =  $newMessage.prev().innerHeight();
+                                                                // + 15px of #messages padding
+    if (clientHeight + scrollTop + lastMessageHeight + newMessageHeight + 15 >= scrollHeight) {
+        // scroll to bottom
+        $messages.animate({ scrollTop: scrollHeight }, "slow");
+    }
+}
 function showPopup() {
     $('.md-trigger').click();
 }
@@ -190,6 +201,6 @@ function addNewUserName(_newUserName) {
     // TODO: use mustache
     let userIcons = ["astronaut", "ninja", "tie", "secret"];
     let i = Math.floor(Math.random() * 4);
-    let newUser = `<i id="${_newUserName}" class="fas fa-user-${userIcons[i]}">  ${_newUserName}</i>`;
+    let newUser = `<i id="${_newUserName}" class="fas fa-user-${userIcons[i]}">  <span>${_newUserName}</span></i>`;
     $('.active-members').append(newUser);
 }
