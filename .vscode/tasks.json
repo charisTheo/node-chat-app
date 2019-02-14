@@ -18,6 +18,13 @@
             "args": [
                 "minify-css"
             ]
+        },
+        {
+            "label": "minify-js",
+            "command": "gulp",
+            "args": [
+                "minify-js"
+            ]
         }
     ]
 }
