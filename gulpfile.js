@@ -2,7 +2,7 @@ let gulp = require('gulp');
 let minifyCSS = require('gulp-minify-css');
 let minifyJS = require('gulp-babel-minify');
 let concat = require('gulp-concat');
-// let browserSync = require('browser-sync').create();
+let browserSync = require('browser-sync').create();
 
 // Global styles
 gulp.task('minify-global-css', function(clean) {
@@ -40,14 +40,6 @@ gulp.task('minify-chat-css', function(clean) {
 
 gulp.task('minify-css', gulp.parallel('minify-global-css', 'minify-chat-css'));
 
-// gulp.task('browserSync', function() {
-//     browserSync.init({
-//       server: {
-//         baseDir: 'server'
-//       },
-//     })
-// });
-
 gulp.task('minify-js', function(clean) {
     gulp.src([
         './public/js/getCookie.js',
@@ -68,6 +60,21 @@ gulp.task('minify-js', function(clean) {
     return clean();
 });
 
-gulp.task('watch', function(clean) {
-    return gulp.watch(['./public/css/*.css', './public/js/*.js'], gulp.parallel('minify-css', 'minify-js'));
+gulp.task('server', function() {
+    browserSync.init({
+      server: {
+        baseDir: './public/',
+        server: 'server/server.js',
+      },
+    })
 });
+
+gulp.task('watch', function(clean) {
+    return gulp.watch(
+            ['./public/css/*.css', './public/js/*.js'], 
+            gulp.parallel('minify-css', 'minify-js')
+        );
+});
+
+/* ******* BrowserSync and Socket.io conflict ******* */
+gulp.task('browserSync', gulp.series('server', 'watch', browserSync.reload));

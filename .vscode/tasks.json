@@ -6,7 +6,9 @@
         {
             "label": "watch",
             "command": "gulp",
-            "args": ["watch"],
+            "args": [
+                "watch"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -24,6 +26,13 @@
             "command": "gulp",
             "args": [
                 "minify-js"
+            ]
+        },
+        {
+            "label": "browserSync",
+            "command": "gulp",
+            "args": [
+                "browserSync"
             ]
         }
     ]

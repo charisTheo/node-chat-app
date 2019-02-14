@@ -1,15 +1,18 @@
-/* #room-name {
-    display: inline-block;
-} */
+.chat-container .room-name-container {
+    padding: 10px;
+    border-radius: 3px;
+}
 .chat-container {
     width: 100%;
     height: 100%;
     background-color: white;
     padding: 20px 40px;
+    position: relative;
 }
 #top-options-bar {
     height: 60px;
     position: sticky;
+    z-index: 99;
     top: 0;
     left: 0;
     width: 100%;
@@ -19,6 +22,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    -webkit-box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.6);
+    -ms-box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.6);
+    -o-box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.6);
+    box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.6);
+}
+#top-options-bar .btn {
+    line-height: 36px;
+    width: auto;
+    margin: 0 20px 0 0;
 }
 #top-options-bar #send-location {
     width: 30px;
@@ -51,7 +64,6 @@
     overflow-y: scroll;
     overflow-wrap: break-word;
     overflow-x: hidden;
-    background-color: #7200ca;    
     font-weight: 300;
     border-radius: 5px;
     padding: 15px;
@@ -176,6 +188,13 @@ input#inputMessage {
     z-index: 999;
     top: 0;
     left: 0;
+    right: 0;
+    align-items: center;
+    width: 80%;
+    margin: 10px auto;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 4px;
     background-color: #fff;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;

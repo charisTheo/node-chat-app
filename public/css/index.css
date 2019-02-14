@@ -1,5 +1,6 @@
 body {
     background-color: #90a4ae;
+    overflow-y: hidden;
 }
 .flex-justify-center {
     justify-content: center;
@@ -11,11 +12,12 @@ body {
     text-align: center;
 }
 .form-container .form-field {
-    margin: 10px auto;
+    margin: 20px auto;
 }
 .form-container .form-field label {
-    color: #18ffff;
+    color: #151515;
     font-weight: bold;
+    font-size: 1.2rem;
 }
 .form-container .form-field input {
     display: block;

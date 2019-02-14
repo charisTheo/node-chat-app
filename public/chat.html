@@ -13,8 +13,7 @@
     <meta property="og:description" content="A web chat app" />
     <meta property="og:url" content="https://web-app-chat.herokuapp.com/" />
 
-    <!-- TODO: -->
-    <title>Chat | ChatApp</title>
+    <title>💬 | Chat</title>
 
     <!--Google fonts Plugin-->
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Jura|Advent+Pro" rel="stylesheet">
@@ -33,15 +32,15 @@
     <noscript><link rel="stylesheet" href="./css/compressed/chat.min.css"></noscript>
 
     <script async defer src="/socket.io/socket.io.js"></script>
+    <!-- <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.slim.js"></script> -->
+
     <!-- <script async defer src="./js/cssParser.js"></script> -->
     <script async defer src="./js/modalEffects.js"></script>
 </head>
 
 <body>
     <div id="top-options-bar">
-        <p class="perspective">
-            <button class="btn-3d md-trigger md-setperspective" data-modal="modal-19">Change username</button>
-        </p>
+        <button class="btn md-trigger md-setperspective" data-modal="modal-19">Change username</button>
         <div id="selectColor">
             <input type="radio" name="color" id="green" value="green">
             <label for="green"></label>
@@ -58,15 +57,18 @@
             <input type="radio" name="color" id="red" value="red">
             <label for="red"></label>
         </div>
+        <div style="flex-grow: 1"></div>
         <button class="btn-3d" id="send-location">
                 <i class="fas fa-map-marker fa-lg" aria-hidden="true"></i>
         </button>
     </div>
 
     <div class="chat-container">
-        <div id="searchResults"></div>
+        <div id="searchResults" class="box-shadow">
+            <h3> <em>GIFs searched will appear here</em> </h3>
+        </div>
         
-        <h3>Room <strong id="room-name"></strong></h3>
+        <h3><span class="room-name-container box-shadow"> Room <strong id="room-name"></strong></span></h3>
 
         <div class="active-members">
             <!-- render from mustache -->
