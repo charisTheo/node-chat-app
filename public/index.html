@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#620eb1">
+    <meta name="theme-color" content="#151515">
     <meta name="description" content="A web chat app">
     <meta name="author" content="www.github.com/charisTheo">
     <meta property="og:site_name" content="Web chat app" />
@@ -16,18 +16,15 @@
     <title>Join | ChatApp</title>
 
     <!--Google fonts Plugin-->
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Jura|Advent+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Jura" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/css?family=Days+One|Exo+2|Montserrat|Titillium+Web:700" rel="stylesheet">  -->
 
     <!--Font Awesome Plugin-->
-    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script> -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">  -->
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"> -->
 
-    <link rel="stylesheet" href="css/buttons.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/media-queries.css">
+    <link rel="stylesheet" href="./css/compressed/global.min.css" media="none" onload="if(media!='all')media='all'">
+    <noscript><link rel="stylesheet" href="./css/compressed/global.min.css"></noscript>
+
 </head>
 
 <body>
@@ -57,8 +54,8 @@
     </div>
     <!-- END OF .container -->
     
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="./js/cssParser.js"></script>
+    <script async defer src="/socket.io/socket.io.js"></script>
+    <script async defer src="./js/cssParser.js"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 , maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#620eb1">
+    <meta name="theme-color" content="#151515">
     <meta name="description" content="A web chat app">
     <meta name="author" content="www.github.com/charisTheo">
     <meta property="og:site_name" content="Web chat app" />
@@ -21,18 +21,20 @@
     <!-- <link href="https://fonts.googleapis.com/css?family=Days+One|Exo+2|Montserrat|Titillium+Web:700" rel="stylesheet">  -->
 
     <!--Font Awesome Plugin-->
-    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous">
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">  -->
 
-    <link rel="stylesheet" href="css/buttons.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/themes.css">
-    <link rel="stylesheet" href="css/chat.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/media-queries.css">
+    <!-- Global -->
+    <link rel="stylesheet" href="./css/compressed/global.min.css" media="none" onload="if(media!='all')media='all'">
+    <noscript><link rel="stylesheet" href="./css/compressed/global.min.css"></noscript>
+    
+    <!-- Chat specific -->
+    <link rel="stylesheet" href="./css/compressed/chat.min.css" media="none" onload="if(media!='all')media='all'">
+    <noscript><link rel="stylesheet" href="./css/compressed/chat.min.css"></noscript>
+
+    <script async defer src="/socket.io/socket.io.js"></script>
+    <script async defer src="./js/cssParser.js"></script>
+    <script async defer src="./js/modalEffects.js"></script>
 </head>
 
 <body>
@@ -64,8 +66,7 @@
     <div class="chat-container">
         <div id="searchResults"></div>
         
-        <label for="room-name">Room</label>
-        <h3 id="room-name"></h3>
+        <h3>Room <strong id="room-name"></strong></h3>
 
         <div class="active-members">
             <!-- render from mustache -->
@@ -217,22 +218,21 @@
         {{/users}}
     </script>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="./js/getCookie.js"></script>
     <script src="./js/jquery-3.2.1.js"></script>
     <script src="./js/jquery-ui.js"></script>
+    <script src="./js/getCookie.js"></script>
     <script src="./js/deparam.js"></script>
-    <script src="./js/TimelineMax.js"></script>
-    <script src="./js/TweenMax.js"></script>
-    <script src="./js/sendSvgAnim.js"></script>
     <script src="./js/classie.js"></script>
-    <script src="./js/cssParser.js"></script>
-    <script src="./js/modalEffects.js"></script>
-    <script src="./js/stickerSearch.js"></script>
     <script src="./js/mustache.js"></script>
     <script src="./js/rendering.js"></script>
     <script src="./js/chat.js"></script>
     <script src="./js/messageFormHandlers.js"></script>
+
+    <script src="./js/TimelineMax.js"></script>
+    <script src="./js/TweenMax.js"></script>
+    <script src="./js/sendSvgAnim.js"></script>
+    <script src="./js/stickerSearch.js"></script>
+
 </body>
 
 </html>
