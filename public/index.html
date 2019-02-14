@@ -33,24 +33,24 @@
 <body>
 
     
-    <div class="container flex-justify-center">
-        <h3 class="welcomeMessage">Welcome!</h3>
-        <h3 class="welcomeMessage">Please join a room</h3>
+    <div class="container flex-justify-center box-shadow">
+        <h2 class="welcomeMessage">Welcome!</h2>
+        <h3 class="welcomeMessage">Please type your <strong>username</strong> and then the <strong>room name</strong> to join</h3>
         
         <div class="form-container">
             <form action="/chat.html" id="join-form">
                 <div class="form-field">
-                    <label for="username">Username:</label>
+                    <label for="username">Username</label>
                     <input type="text" name="username" id="username" placeholder="ex: a Shining Star" required autocomplete="off" autofocus>
                 </div>
                 
                 <div class="form-field">
-                    <label for="room">Room name:</label>
+                    <label for="room">Room name</label>
                     <input type="text" name="room" id="room" placeholder="ex: the Dark Room" required autocomplete="on">
                 </div>
 
                 <p class="perspective">
-                    <button type="submit" form="join-form" class="btn-3d">Done</button>
+                    <button type="submit" form="join-form" class="btn">Done</button>
                 </p>
             </form>
         </div>        

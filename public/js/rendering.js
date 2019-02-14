@@ -1,9 +1,19 @@
 function updateUsersList(usersList) {   
-    // let userIcons = ["astronaut", "ninja", "tie", "secret"];
-    // let i = Math.floor(Math.random() * userIcons.length - 1);
+    let userIcons = ["astronaut", "ninja", "tie", "secret"];
+    let icon = userIcons[Math.floor((Math.random() * userIcons.length))];
     let template = $('#users-list-template').html();
+    
+    let list = usersList.map(function(userName) {
+        // remove spaces between usernames and add a dash
+        // "the best" -> "the-best"
+        return {
+            userName: userName,
+            icon: icon,
+            id: userName.split(" ").join("-")
+        };
+    });
     let html = Mustache.render(template, {
-        users: usersList,
+        users: list,
     });
     
     $('.active-members').html(html);

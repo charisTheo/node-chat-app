@@ -36,19 +36,7 @@
 </head>
 
 <body>
-    <div class="container">
-        <button class="btn-3d" id="send-location">
-            <i class="fas fa-map-marker fa-lg" aria-hidden="true"></i>
-        </button>
-
-        <div id="searchResults"></div>
-        
-        <h3 id="room-name"></h3>
-
-        <div class="active-members">
-            <!-- render from mustache -->
-        </div>
-
+    <div id="top-options-bar">
         <p class="perspective">
             <button class="btn-3d md-trigger md-setperspective" data-modal="modal-19">Change username</button>
         </p>
@@ -68,6 +56,21 @@
             <input type="radio" name="color" id="red" value="red">
             <label for="red"></label>
         </div>
+        <button class="btn-3d" id="send-location">
+                <i class="fas fa-map-marker fa-lg" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="chat-container">
+        <div id="searchResults"></div>
+        
+        <label for="room-name">Room</label>
+        <h3 id="room-name"></h3>
+
+        <div class="active-members">
+            <!-- render from mustache -->
+        </div>
+
         <div id="messages">
             <!-- rendering messages container by mustache -->
         </div>
@@ -146,20 +149,19 @@
 
     <!-- MODALS -->
     <div class="md-modal" id="modal-19">
-        <div class="md-content">
-            <h3 class="welcomeMessage">Welcome!</h3>
-            <h3 class="welcomeMessage">Please join a room</h3>
+        <div class="md-content box-shadow">
+            <h3 class="welcomeMessage">Change username or join another room</h3>
 
             <div class="form-container">
                 <form action="/chat.html" id="join-form">
                     <div class="form-field">
-                        <label for="username">Username:</label>
+                        <label for="username">Username</label>
                         <input type="text" name="username" id="username" placeholder="ex: a Shining Star" required
                             autocomplete="off" autofocus>
                     </div>
 
                     <div class="form-field">
-                        <label for="room">Room name:</label>
+                        <label for="room">Room name</label>
                         <input type="text" name="room" id="room" placeholder="ex: the Dark Room" required autocomplete="on">
                     </div>
 
@@ -209,8 +211,8 @@
     <script id="users-list-template" type="text/template">
         {{#users}}
                 <!-- ["astronaut", "ninja", "tie", "secret"] -->
-            <i id="{{{.}}}" class="fas fa-user-astronaut">  
-                <span>{{.}}</span>
+            <i id="{{{userName}}}" class="fas fa-user-{{{icon}}} box-shadow">  
+                <span>{{userName}}</span>
             </i>
         {{/users}}
     </script>

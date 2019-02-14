@@ -11,17 +11,50 @@ a:focus {
     text-decoration: none;
 }
 
-#send-location {
-    width: 30px;
-    height: 30px;
-    margin-left: auto;
-    padding: 0;
+.btn {
+    margin: 20px;
+    width: 250px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    -webkit-box-shadow: 0px 7px 18px 2px rgba(24, 255, 255, 0.4);
+    -moz-box-shadow: 0px 7px 18px 2px rgba(24, 255, 255, 0.4);
+    -ms-box-shadow: 0px 7px 18px 2px rgba(24, 255, 255, 0.4);
+    -o-box-shadow: 0px 7px 18px 2px rgba(24, 255, 255, 0.4);
+    box-shadow: 0px 7px 18px 2px rgba(24, 255, 255, 0.4);
+    font-size: 16px;
+    line-height: 58px;
+    display: inline-block;
+    font-weight: bold;
+    color: #00cbcc;
+    border-radius: 30px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.35s;
+    -o-transition: all .35s;
+    -ms-transition: all .35s;
+    -moz-transition: all .35s;
+    -webkit-transition: all .35s;
+    background-color: #fff;
+}
+.btn:active, .btn:focus {
+    outline: none;
+    text-decoration: none;
+}
+.btn:active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.btn:hover {
+    color: #000;
+    background-color: rgb(24, 255, 255);
+    background: -webkit-gradient(linear, left top, right top, from(#83b9ff), to(rgb(24, 255, 255))) !important;
+    background: linear-gradient(to right, #83b9ff, rgb(24, 255, 255)) !important;
 }
 
-
 .btn-3d {
-    background-color: #e254ff;
-    color: #fff;
+    background-color: #18ffff;
+    color: #000;
     outline: none;
     padding: 10px 5px;
     font-weight: 900;
@@ -48,7 +81,7 @@ a:focus {
     height: 40%;
     left: 0;
     top: 100%;
-    background-color: #7200ca;
+    background-color: #019e9e;
     /* add support */
     transform: rotateX(-90deg);
     transform-origin: 0% 0%;
@@ -57,13 +90,13 @@ a:focus {
     -webkit-transform-origin: 0% 0%;
 }
 .btn-3d:active {
-    background-color: #aa00ff;
+    background-color: #00cbcc;
     /* add support */
     transform: rotateX(0deg); 
 }
 .btn-3d:hover, .btn-3d:focus {
-    background-color: #e254ff;
-    color: #fff;
+    background-color: #18ffff;
+    color: #000;
     outline: none !important;
     outline-style: none;        
 }

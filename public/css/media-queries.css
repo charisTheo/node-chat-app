@@ -11,18 +11,19 @@
 @media only screen and (min-width: 767px) {
     .container  {
         max-width: 70vw;
+        width: 70vw;
+        min-height: 75vh;
+        height: 75vh;
+        top: 10vh;
+        position: relative;
         margin: 0 auto;
-        box-shadow: 0 0 11px 5px rgba(0,0,0,0.45);
-        -o-box-shadow: 0 0 11px 5px rgba(0,0,0,0.45);
-        -ms-box-shadow: 0 0 11px 5px rgba(0,0,0,0.45);
-        -moz-box-shadow: 0 0 11px 5px rgba(0,0,0,0.45);
-        -webkit-box-shadow: 0 0 11px 5px rgba(0,0,0,0.45);
+        border-radius: 3px;
     }
 }
 @media only screen and (min-width: 959px) {
-    .container  {
+    /* .container  {
         max-width: 50vw;
-    }
+    } */
 }
 @media only screen and (min-width: 1439px) {
     /* .container  {
