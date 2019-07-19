@@ -11,6 +11,10 @@ workbox.routing.registerRoute(
   new workbox.strategies.CacheFirst()
 );
 
+workbox.routing.registerRoute(
+  /\.css$/,
+  new workbox.strategies.CacheFirst()
+);
 
 // TODO:
 // self.addEventListener('push', function(event) {

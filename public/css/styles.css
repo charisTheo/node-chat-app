@@ -56,6 +56,8 @@ input {
     padding: 8px;
     border: none;
     font-size: 1rem;
+    /* fixes input bug on safari */
+    -webkit-user-select: text; 
 }
 input:focus
 input:active {

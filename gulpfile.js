@@ -2,7 +2,7 @@ let gulp = require('gulp');
 let minifyCSS = require('gulp-minify-css');
 let minifyJS = require('gulp-babel-minify');
 let concat = require('gulp-concat');
-let browserSync = require('browser-sync').create();
+// let browserSync = require('browser-sync').create();
 
 // Global styles
 gulp.task('minify-global-css', function(clean) {
@@ -60,14 +60,14 @@ gulp.task('minify-js', function(clean) {
     return clean();
 });
 
-gulp.task('server', function() {
-    browserSync.init({
-      server: {
-        baseDir: './public/',
-        server: 'server/server.js',
-      },
-    })
-});
+// gulp.task('server', function() {
+//     browserSync.init({
+//       server: {
+//         baseDir: './public/',
+//         server: 'server/server.js',
+//       },
+//     })
+// });
 
 gulp.task('watch', function(clean) {
     return gulp.watch(
@@ -77,4 +77,4 @@ gulp.task('watch', function(clean) {
 });
 
 /* ******* BrowserSync and Socket.io conflict ******* */
-gulp.task('browserSync', gulp.series('server', 'watch', browserSync.reload));
+// gulp.task('browserSync', gulp.series('server', 'watch', browserSync.reload));
