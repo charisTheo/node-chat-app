@@ -1,5 +1,5 @@
 const webPush = require('web-push');
-const PUBLIC_VAPID_KEY, PRIVATE_VAPID_KEY;
+let PUBLIC_VAPID_KEY, PRIVATE_VAPID_KEY;
 
 if (process.env.NODE_ENV === 'dev') {
   const keys = require('../keys.json');
