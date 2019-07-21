@@ -1,14 +1,44 @@
+const PUBLIC_VAPID_KEY = Cookies.get('PUBLIC_VAPID_KEY') || '';
 let socket = io();
 let $messageForm = $('#messageForm');
 $('#jet-smoke').hide();
 
-$(document).ready(function(){
+$(document).ready(function() {
     $('#inputMessage').focus();
-    let colorPref = window.localStorage.getItem("color-preference") || undefined;
-    if (colorPref) {
-        $(`#${colorPref}`).click();
+    let themeColor = window.localStorage.getItem("UI_THEME_COLOR") || 'blue';
+    if (themeColor) {
+        $(`#${themeColor}`).click();
+    }
+    
+    //TODO: check permissions if notifications icon is clicked
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistration()
+        .then(function(registration) {
+            if (!registration) {
+                console.log("navigator.serviceWorker.getRegistration: no service worker registration found");
+                return;
+            }
+
+            registration.pushManager.permissionState({userVisibleOnly: true}).then(permission => {
+                // Possible values are 'prompt', 'denied', or 'granted'
+                if (permission === "prompt") {
+                    // request permission only when user has not either denied or accepted notifications 
+                    console.log("TCL: PUBLIC_VAPID_KEY", PUBLIC_VAPID_KEY)
+                    registration.pushManager.subscribe({
+                        userVisibleOnly: true,
+                        applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY)
+                    }).then(function(subscription) {
+                        socket.emit('userSubscribed', { subscription });
+                    });
+                }
+    
+            }).catch((error) => {
+                console.log("pushManager.permissionState: error", error)
+            });
+        });
     }
 });
+
 
 socket.on('newMessage', function(message){
     renderMessage(message);
@@ -29,6 +59,9 @@ socket.on('connect', function() {
         // render room name
         $('#room-name').text(params.room);
     });
+});
+socket.on('userJoined', function({PUBLIC_VAPID_KEY}) {
+    Cookies.set('PUBLIC_VAPID_KEY', PUBLIC_VAPID_KEY, { expires: 60}); // expire in 2 months
 });
 socket.on('newLocationMessage', function(message) {
     renderLocationMessage(message);
@@ -69,8 +102,8 @@ $("input[type='radio']").on("click", function(e) {
 });
 //add listener on #selectColor to store color preference in local storage
 $('#selectColor label').on("click", function(e) {
-    let colorPreference = e.target.getAttribute("for");
-    window.localStorage.setItem("color-preference", colorPreference);
+    let themeColor = e.target.getAttribute("for");
+    window.localStorage.setItem("UI_THEME_COLOR", themeColor);
 });
 
 function showPopup() {

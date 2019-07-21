@@ -4,6 +4,12 @@
 //     });
 // }
 
+// user.webPushSubscription = {
+//     subscription: '',
+//     room: '',
+//     username: ''
+// };
+
 class Users {
     constructor () {
         this.users = [];

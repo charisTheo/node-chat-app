@@ -2,8 +2,9 @@ const path = require('path');
 const http = require('http');
 const express = require('express'); 
 const socketIO = require('socket.io');
+const { webPush } = require('./utils/webPush');
 const { isRealString } = require('./utils/validation');
-const { Users } = require('./utils/users');
+const { Users } = require('./Models/Users');
 const {generateMessage, generateImageMessage, generateLocationMessage} = require('./utils/message');
 
 const publicPath = path.join(__dirname, "/../public");
@@ -47,6 +48,9 @@ io.on('connection', (socket) => {
         // emit messages
         socket.broadcast.to(params.room).emit("newMessage", generateMessage("Admin", params.username + " has joined the group!"));
         socket.emit("newMessage", generateMessage('Admin', 'Welcome to the ' + params.room + ' group'));
+        socket.emit("userJoined", {
+            PUBLIC_VAPID_KEY: process.env.PUBLIC_VAPID_KEY || require('./keys.json').PUBLIC_VAPID_KEY
+        });
         // socket.leave(params.room);
         callback();
     });
@@ -75,6 +79,40 @@ io.on('connection', (socket) => {
         }
     });
 
+    socket.on('userSubscribed', ({ subscription }) => {
+        let user = users.getUser(socket.id);
+
+        if (user) {
+            // subscribe user for specific chat and save the username and room name
+            user.webPushSubscription = {
+                subscription,
+                room: user.room,
+                username: user.username
+            };
+
+            webPush.sendNotification(
+                subscription,
+                JSON.stringify({
+                    title: "Chat App",
+                    body: `Yeay! You will now receive notifications for new messages in ${user.room}!`,
+                    tag: "subscribed",
+                    actions: [
+                        {
+                            action: 'openRoom',
+                            title: `Open ${user.room}`
+                        }
+                    ],
+                    data: {
+                        room: user.room,
+                        username: user.username
+                    }
+                })
+            ).catch(error => {
+                console.error(error.stack);
+            });
+        }
+    });
+
     socket.on('disconnect', () => {
         let user = users.removeUser(socket.id);
 
@@ -86,5 +124,5 @@ io.on('connection', (socket) => {
 });
 
 server.listen(PORT, () => {
-    console.log("Server started and listening on ", PORT);
+    console.log(`Server started and listening on http://localhost:${PORT}`);
 });

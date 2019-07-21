@@ -1,5 +1,5 @@
 const GIPHY_API_KEY = 'nTqg36BVch3vMJy9ywsmfOz1fl1IzpPG';
-const protocol = getCookie("protocol");
+const protocol = Cookies.get("protocol");
 
 let query = "";
 $('#removeInputBtn').hide();

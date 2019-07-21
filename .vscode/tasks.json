@@ -4,10 +4,10 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "watch",
+            "label": "nodemon",
             "command": "gulp",
             "args": [
-                "watch"
+                "nodemon-watch"
             ],
             "group": {
                 "kind": "build",
@@ -26,13 +26,6 @@
             "command": "gulp",
             "args": [
                 "minify-js"
-            ]
-        },
-        {
-            "label": "browserSync",
-            "command": "gulp",
-            "args": [
-                "browserSync"
             ]
         }
     ]
