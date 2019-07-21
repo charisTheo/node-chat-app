@@ -52,7 +52,7 @@ gulp.task('minify-css', gulp.parallel('minify-global-css', 'minify-chat-css'));
 gulp.task('minify-js', function(done) {
     gulp.src([
         './public/js/cookie.min.js',
-        './public/js/urlBase64ToUint8Array.js',
+        './public/js/util.js',
         './public/js/deparam.js',
         './public/js/classie.js',
         './public/js/rendering.js',

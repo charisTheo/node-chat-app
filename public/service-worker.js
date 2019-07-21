@@ -5,11 +5,11 @@ if (workbox) {
   workbox.precaching.precacheAndRoute([
   {
     "url": "css/compressed/chat.min.css",
-    "revision": "2cc6705c8b2fe61bf84fcb0df3dfd8f8"
+    "revision": "31a6d6b0edf05b1ae22e6f7af6102b5b"
   },
   {
     "url": "css/compressed/global.min.css",
-    "revision": "93e91671ddea05570fcd36bd852c8461"
+    "revision": "53fc90d8497eeaebef2f28ab1fa73eff"
   },
   {
     "url": "index.html",
@@ -17,11 +17,11 @@ if (workbox) {
   },
   {
     "url": "chat.html",
-    "revision": "b7aa4d69ad6d76f50db7a9a32b7e6cd6"
+    "revision": "b98cd2e3e794367aea71fb9397a2ba30"
   },
   {
     "url": "js/chat.js",
-    "revision": "90ce99a4d9de507ca1c124224e5b8e85"
+    "revision": "0934fd28af9b269e9029b9ff980ce83e"
   },
   {
     "url": "js/classie.js",
@@ -29,7 +29,7 @@ if (workbox) {
   },
   {
     "url": "js/compressed/bundle.min.js",
-    "revision": "f9a04048e610dc3378867eb332f08aa2"
+    "revision": "d5420cfbda7e6f7a5e9c00601ab686b9"
   },
   {
     "url": "js/cookie.min.js",
@@ -61,7 +61,7 @@ if (workbox) {
   },
   {
     "url": "js/messageFormHandlers.js",
-    "revision": "5f9831d61820885c446f56cb3400b015"
+    "revision": "4651e3423a04522a1a84f0b20b728db0"
   },
   {
     "url": "js/modalEffects.js",
@@ -81,7 +81,7 @@ if (workbox) {
   },
   {
     "url": "js/stickerSearch.js",
-    "revision": "c88fd2f0e7a599530211caa5e444b19f"
+    "revision": "1747aedc962d0865d46c442e60b5553c"
   },
   {
     "url": "js/TimelineMax.js",
@@ -92,8 +92,12 @@ if (workbox) {
     "revision": "baf4488f99b0a984096bb1938b669fd2"
   },
   {
-    "url": "js/urlBase64ToUint8Array.js",
-    "revision": "f0827d2dbadb9fce1ce51b8013706e3c"
+    "url": "js/util.js",
+    "revision": "7755baf42e68b5d08e5d7d517ae3a160"
+  },
+  {
+    "url": "img/add-ios.png",
+    "revision": "cb086c9f343cec9fed1b7e248418ef39"
   },
   {
     "url": "img/chrome-web-icon-96.png",
@@ -102,6 +106,10 @@ if (workbox) {
   {
     "url": "img/send.svg",
     "revision": "6df767495e99da4119f6c6871c2dffaa"
+  },
+  {
+    "url": "img/share-ios.png",
+    "revision": "901f67a4101f75da336cbf41e17c8cf4"
   },
   {
     "url": "img/smoke_opt.svg",

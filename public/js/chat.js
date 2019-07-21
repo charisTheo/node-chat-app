@@ -8,6 +8,11 @@ $(document).ready(function() {
     if (themeColor) {
         $(`#${themeColor}`).click();
     }
+
+    // Checks if should display install popup notification:
+    if (isIos() && !isInStandaloneMode()) {
+        document.getElementById('ios-install-banner').style.display = 'block';
+    }
 });
 
 
@@ -78,18 +83,34 @@ function requestPushNotificationPermissions(PUBLIC_VAPID_KEY) {
     }
 }
 
+let installButton = document.getElementById('install-button');
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    installButton.style.display = 'block';
+});
 
-let locationButton = document.getElementById('send-location');
+installButton.addEventListener("click", function() {
+    installButton.style.display = 'none';
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then(function(userChoice) {
+        deferredPrompt = null;
+    });
+});
+
+let locationButton = document.getElementById('send-location-button');
 locationButton.addEventListener("click", function() {
     if (!navigator.geolocation) {
         return alert("Geolocation is not supported for your browser!");
     }
     // disable geolocation button
-    $('#send-location').attr("disabled", true); 
+    $('#send-location-button').attr("disabled", true); 
 
     navigator.geolocation.getCurrentPosition(function(position) {
         // re-enable geolocation button
-        $('#send-location').attr("disabled", false); 
+        $('#send-location-button').attr("disabled", false); 
         socket.emit('createLocationMessage', {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude

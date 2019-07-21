@@ -36,6 +36,9 @@
     font-size: 0.8em;
     padding: 5px 15px;
 }
+#install-button {
+    display: none;
+}
 @media screen and (min-width: 600px) {
     #top-options-bar .btn {
         line-height: 36px;
@@ -240,4 +243,50 @@ input#inputMessage {
     -moz-transform-origin: top center;
     -o-transform-origin: top center;
     transform-origin: top center;
+}
+
+#ios-install-banner {
+    display: none;
+    position: fixed;
+    width: 95vw;
+    padding: 5px 5px 15px 5px;
+    margin: 10px auto;
+    bottom: 60px;
+    border-radius: 10px;
+    background-color: #e6eef7;
+    font-size: 12px;
+}
+#ios-install-banner:before {
+    content: "";
+    background-color: #e6eef7;
+    position: absolute;
+    bottom: 0;
+    left: calc(50vw - 10px);
+    width: 20px;
+    height: 20px;
+    transform: rotateZ(45deg);
+    transform-origin: left bottom;
+}
+#ios-install-banner > img {
+    display: inline-block;
+    width: 18px;
+    object-fit: contain;
+    margin: 0 5px -6px 5px;
+}
+#ios-install-banner > .add-ios-container {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: rgb(104, 104, 112);
+    padding: 5px;
+    width: 24px;
+    height: 24px;
+    margin: 0 5px -6px 5px;
+}
+#ios-install-banner > .add-ios-container > img.add-ios {
+    filter: invert(1);
+    object-fit: contain;
+    width: 12px;
+}
+#ios-install-banner > img.share-ios {
+    filter: invert(64%) sepia(76%) saturate(3603%) hue-rotate(197deg) brightness(102%) contrast(93%);
 }
