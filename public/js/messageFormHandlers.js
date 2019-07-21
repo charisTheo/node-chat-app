@@ -1,6 +1,7 @@
 $('#removeInputBtn').on("click", function(e) {
     e.preventDefault();
     $('#inputMessage').val("");
+    toggleGifSearch(false);
     $(this).hide("slow");
 });
 

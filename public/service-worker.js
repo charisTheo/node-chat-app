@@ -5,7 +5,7 @@ if (workbox) {
   workbox.precaching.precacheAndRoute([
   {
     "url": "css/compressed/chat.min.css",
-    "revision": "3faf5b3906b7ab0a38d49b1624aae6bc"
+    "revision": "2cc6705c8b2fe61bf84fcb0df3dfd8f8"
   },
   {
     "url": "css/compressed/global.min.css",
@@ -17,11 +17,11 @@ if (workbox) {
   },
   {
     "url": "chat.html",
-    "revision": "55ab7fd516a21fd955fc2e4c6ea3284d"
+    "revision": "b7aa4d69ad6d76f50db7a9a32b7e6cd6"
   },
   {
     "url": "js/chat.js",
-    "revision": "08ae60070503fcf3231ce3fe952e8057"
+    "revision": "90ce99a4d9de507ca1c124224e5b8e85"
   },
   {
     "url": "js/classie.js",
@@ -29,7 +29,7 @@ if (workbox) {
   },
   {
     "url": "js/compressed/bundle.min.js",
-    "revision": "e2b8759be705227e785541cb759d5db9"
+    "revision": "f9a04048e610dc3378867eb332f08aa2"
   },
   {
     "url": "js/cookie.min.js",
@@ -96,6 +96,10 @@ if (workbox) {
     "revision": "f0827d2dbadb9fce1ce51b8013706e3c"
   },
   {
+    "url": "img/chrome-web-icon-96.png",
+    "revision": "7616f2454346cd2eb7fc4cfdc1688921"
+  },
+  {
     "url": "img/send.svg",
     "revision": "6df767495e99da4119f6c6871c2dffaa"
   },
@@ -109,11 +113,15 @@ if (workbox) {
   },
   {
     "url": "img/speech-notification-badge-48.png",
-    "revision": "4b2d9b96c21294d225ba25deb67b0da6"
+    "revision": "ce1a303cf8c6fdf8dfad494bb4507f08"
   },
   {
-    "url": "img/speech-notification-badge-96.png",
-    "revision": "5883d06f76d0969abc7ea5c65b0e5437"
+    "url": "img/speech-notification-badge-inverted-48.png",
+    "revision": "d6c9317472c50676f820b32a6a68d456"
+  },
+  {
+    "url": "img/speech-notification-badge.svg",
+    "revision": "37ab23305a1954266e9c04168b14a986"
   },
   {
     "url": "manifest.json",
@@ -152,8 +160,8 @@ self.addEventListener('push', function(event) {
         options = {
             ...data,
             title: "",
-            icon: './img/speech-notification-badge-96.png',
-            chrome_web_icon: './img/speech-notification-badge-96.png',
+            icon: './img/chrome-web-icon-96.png',
+            chrome_web_icon: './img/chrome-web-icon-96.png',
             badge: './img/speech-notification-badge-48.png',
             chrome_web_badge: './img/speech-notification-badge-48.png',
             renotify: true

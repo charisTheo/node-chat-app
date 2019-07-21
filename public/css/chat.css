@@ -6,7 +6,7 @@
     width: 100%;
     height: 100%;
     background-color: white;
-    padding: 10px 20px;
+    padding: 10px;
     position: relative;
 }
 #top-options-bar {
@@ -42,10 +42,11 @@
         max-width: initial;
     }
 }
-#top-options-bar #send-location {
+.square-button-small {
     width: 30px;
     height: 30px;
     padding: 0;
+    margin: 0 5px;
 }
 .active-members {
     display: -webkit-box;
@@ -62,6 +63,7 @@
     margin: 10px;
     padding: 8px;
     border-radius: 3px;
+    font-size: 12px;
 }
 .active-members span {
     color: #48027e;
@@ -75,9 +77,8 @@
     overflow-y: scroll;
     overflow-wrap: break-word;
     overflow-x: hidden;
-    font-weight: 300;
-    border-radius: 5px;
-    padding: 15px;
+    border-radius: 4px;
+    padding: 5px;
     text-align: left;
 }
 
@@ -99,8 +100,6 @@
 
 form#messageForm {
     max-width: 700px;
-    margin: 10px auto;
-    padding: 8px 0;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -109,7 +108,18 @@ form#messageForm {
     flex-direction: row;
     align-content: center;
     justify-content: center;
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    height: 50px;
+    margin: 0 auto;
+}
+@media screen and (min-width: 900px) {
+    form#messageForm {
+        box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.6);
+    }
 }
 #stickerSearch {
     -webkit-transition: all 0.5;
@@ -119,7 +129,7 @@ form#messageForm {
     color: #7200ca;
     position: absolute;
     left: 0;
-    padding: 9px 5px;
+    padding: 15px 5px;
     opacity: 0.6;
 }
 input#toggleStickerSearch {
@@ -153,25 +163,27 @@ input#inputMessage {
     right: 6em;
     background: none;
     color: #d50000;
-    padding: 4px;
+    padding: 12px 5px;
+    font-size: 12px;
 }
 .message {
-    margin: 15px 0px;
+    margin: 10px 0px;
     text-align: left; 
 }
 .message .message-details {
     display: inline-block;
 }
 .message .message-details .message-createdAt, 
-.message .message-details strong {
+.message .message-details > .message-user-name {
     display: block;
     text-align: left;
 }
-.message .message-details strong {
+.message .message-details > .message-user-name {
     color: #fff;
+    font-size: 12px;
 }
 .message .message-createdAt {
-    font-size: 0.8em;
+    font-size: 10px;
 }
 .message .message-text {
     border-radius: 4px;
@@ -179,7 +191,7 @@ input#inputMessage {
     box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.75);
     padding: 6px 10px;
     margin: 0px 5px;
-    font-size: 0.8em;
+    font-size: 12px;
     display: inline-block;
 }
 .message .message-text .location-link {
@@ -200,26 +212,24 @@ input#inputMessage {
     flex-direction: row;
     flex-flow: wrap;
     z-index: 999;
-    top: 0;
+    bottom: 50px;
     left: 0;
     right: 0;
-    align-items: center;
-    width: 80%;
-    margin: 10px auto;
-    justify-content: center;
-    padding: 20px;
-    border-radius: 4px;
+    align-items: flex-start;
+    width: 100%;
+    justify-content: space-evenly;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     background-color: #fff;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    box-shadow: 0 -12px 12px 0 rgba(0,0,0,0.25);
     -webkit-transition: all 0.5;
     -moz-transition: all 0.5;
     -o-transition: all 0.5;
     transition: all 0.5;
-    -webkit-transform: translateY(-40vh);
-    -moz-transform: translateY(-40vh);
-    -o-transform: translateY(-40vh);
-    transform: translateY(-40vh);
+    -webkit-transform: translateY(40vh);
+    -moz-transform: translateY(40vh);
+    -o-transform: translateY(40vh);
+    transform: translateY(40vh);
 }
 #searchResults.open {
     -webkit-transform: translateY(0);

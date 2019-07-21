@@ -46,7 +46,10 @@
 
 <body>
     <div id="top-options-bar">
-        <button class="btn md-trigger md-setperspective" data-modal="modal-19">Change username</button>
+        <button class="btn-3d md-trigger md-setperspective square-button-small" data-modal="modal-19">
+            <i class="fas fa-cog fa-lg" aria-hidden="true"></i>
+        </button>
+
         <div id="selectColor">
             <input type="radio" name="color" id="green" value="green">
             <label for="green"></label>
@@ -59,22 +62,21 @@
 
             <input type="radio" name="color" id="orange" value="orange">
             <label for="orange"></label>
-
-            <input type="radio" name="color" id="red" value="red">
-            <label for="red"></label>
         </div>
+
         <div style="flex-grow: 1"></div>
-        <button class="btn-3d" id="send-location">
-                <i class="fas fa-map-marker fa-lg" aria-hidden="true"></i>
+
+        <button class="btn-3d square-button-small" id="send-location">
+            <i class="fas fa-map-marker fa-lg" aria-hidden="true"></i>
+        </button>
+
+        <button class="btn-3d square-button-small" id="notifications-button">
+            <i class="fas fa-bell fa-lg" aria-hidden="true"></i>
         </button>
     </div>
 
     <div class="chat-container">
-        <div id="searchResults" class="box-shadow">
-            <h3> <em>GIFs searched will appear here</em> </h3>
-        </div>
-        
-        <h3><span class="room-name-container box-shadow"> Room <strong id="room-name"></strong></span></h3>
+        <h4><span class="room-name-container box-shadow"> Room <strong id="room-name"></strong></span></h4>
 
         <div class="active-members">
             <!-- render from mustache -->
@@ -85,6 +87,10 @@
         </div>
 
         <form name="messageForm" id="messageForm">
+            <div id="searchResults">
+                <h4> <em>GIFs searched will appear here</em> </h4>
+            </div>
+
             <label id="stickerSearch" for="toggleStickerSearch">
                 <i class="fas fa-rocket" aria-hidden="true"></i>
             </label>
@@ -188,7 +194,7 @@
     <script id="message-template" type="text/template">
         <div class="message">
             <div class="message-details">
-                <strong>{{from}}</strong>
+                <strong class="message-user-name">{{from}}</strong>
                 <span class='message-createdAt'>{{createdAt}}</span> 
             </div>
             <span class="message-text">{{text}}</span>
@@ -198,7 +204,7 @@
     <script id="image-message-template" type="text/template">
         <div class="message">
             <div class="message-details">
-                <strong>{{from}}</strong>
+                <strong class="message-user-name">{{from}}</strong>
                 <span class='message-createdAt'>{{createdAt}}</span> 
             </div>
             <span class="message-text"><img src="{{{url}}}" alt="a gif from giphy"></span>
@@ -208,7 +214,7 @@
     <script id="location-message-template" type="text/template">
         <div class="message">
             <div class="message-details">
-                <strong>{{from}}</strong>
+                <strong class="message-user-name">{{from}}</strong>
                 <span class='message-createdAt'>{{createdAt}}</span> 
             </div>
             <span class="message-text">

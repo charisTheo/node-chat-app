@@ -85,16 +85,6 @@ gulp.task('nodemon', function (cb) {
     });
 });
 
-gulp.task('nodemon-watch', gulp.series('nodemon', function(done) {
-    gulp.watch('./public/service-worker-src.js', gulp.series('service-worker'));
-
-    return gulp.watch(
-        ['./public/css/*.css', './public/js/*.js'], 
-        gulp.series(clean, 'minify-css', 'minify-js'
-    ));
-}));
-
-
 gulp.task('service-worker', function(done) {
     return workboxBuild.injectManifest({
         swSrc: 'public/service-worker-src.js',
@@ -120,6 +110,15 @@ gulp.task('service-worker', function(done) {
 
     });
 });
+
+gulp.task('nodemon-watch', gulp.series('service-worker', 'nodemon', function(done) {
+    gulp.watch('./public/service-worker-src.js', gulp.series('service-worker'));
+
+    return gulp.watch(
+        ['./public/css/*.css', './public/js/*.js'], 
+        gulp.series(clean, 'minify-css', 'minify-js'
+    ));
+}));
 
 gulp.task('build', gulp.series(clean, 'minify-css', 'minify-js', 'service-worker'));
 

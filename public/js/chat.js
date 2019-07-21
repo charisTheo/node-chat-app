@@ -1,4 +1,3 @@
-const PUBLIC_VAPID_KEY = Cookies.get('PUBLIC_VAPID_KEY') || '';
 let socket = io();
 let $messageForm = $('#messageForm');
 $('#jet-smoke').hide();
@@ -8,34 +7,6 @@ $(document).ready(function() {
     let themeColor = window.localStorage.getItem("UI_THEME_COLOR") || 'blue';
     if (themeColor) {
         $(`#${themeColor}`).click();
-    }
-    
-    //TODO: check permissions if notifications icon is clicked
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistration()
-        .then(function(registration) {
-            if (!registration) {
-                console.log("navigator.serviceWorker.getRegistration: no service worker registration found");
-                return;
-            }
-
-            registration.pushManager.permissionState({userVisibleOnly: true}).then(permission => {
-                // Possible values are 'prompt', 'denied', or 'granted'
-                if (permission === "prompt") {
-                    // request permission only when user has not either denied or accepted notifications 
-                    console.log("TCL: PUBLIC_VAPID_KEY", PUBLIC_VAPID_KEY)
-                    registration.pushManager.subscribe({
-                        userVisibleOnly: true,
-                        applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY)
-                    }).then(function(subscription) {
-                        socket.emit('userSubscribed', { subscription });
-                    });
-                }
-    
-            }).catch((error) => {
-                console.log("pushManager.permissionState: error", error)
-            });
-        });
     }
 });
 
@@ -62,12 +33,50 @@ socket.on('connect', function() {
 });
 socket.on('userJoined', function({PUBLIC_VAPID_KEY}) {
     Cookies.set('PUBLIC_VAPID_KEY', PUBLIC_VAPID_KEY, { expires: 60}); // expire in 2 months
+    requestPushNotificationPermissions(PUBLIC_VAPID_KEY);
 });
 socket.on('newLocationMessage', function(message) {
     renderLocationMessage(message);
 });
 //-----------------------------End of sockets-----------------------
 
+
+let notificationsButton = document.getElementById('notifications-button');
+notificationsButton.addEventListener("click", function() {
+    //TODO: check permissions if notifications icon is clicked
+    const PUBLIC_VAPID_KEY = Cookies.get('PUBLIC_VAPID_KEY');
+    if (PUBLIC_VAPID_KEY) {
+        requestPushNotificationPermissions(PUBLIC_VAPID_KEY);
+    }
+});
+
+function requestPushNotificationPermissions(PUBLIC_VAPID_KEY) {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistration()
+        .then(function(registration) {
+            if (!registration) {
+                console.log("navigator.serviceWorker.getRegistration: no service worker registration found");
+                return;
+            }
+
+            registration.pushManager.permissionState({userVisibleOnly: true}).then(permission => {
+                // Possible values are 'prompt', 'denied', or 'granted'
+                if (permission === "prompt") {
+                    // request permission only when user has not either denied or accepted notifications 
+                    registration.pushManager.subscribe({
+                        userVisibleOnly: true,
+                        applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY)
+                    }).then(function(subscription) {
+                        socket.emit('userSubscribed', { subscription });
+                    });
+                }
+    
+            }).catch((error) => {
+                console.log("pushManager.permissionState: error", error)
+            });
+        });
+    }
+}
 
 
 let locationButton = document.getElementById('send-location');

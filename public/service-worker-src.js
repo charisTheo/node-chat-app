@@ -31,8 +31,8 @@ self.addEventListener('push', function(event) {
         options = {
             ...data,
             title: "",
-            icon: './img/speech-notification-badge-96.png',
-            chrome_web_icon: './img/speech-notification-badge-96.png',
+            icon: './img/chrome-web-icon-96.png',
+            chrome_web_icon: './img/chrome-web-icon-96.png',
             badge: './img/speech-notification-badge-48.png',
             chrome_web_badge: './img/speech-notification-badge-48.png',
             renotify: true

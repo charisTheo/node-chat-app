@@ -32,23 +32,26 @@ function getGifs() {
         });
     }
 }
-function toggleGifSearch(bool) {
-    if (bool) {
+function toggleGifSearch(show) {
+    if (show) {
         $('#stickerSearch').css({"opacity": 1, "font-size": "larger"});
         $('div#searchResults').addClass("open");        
         $('#toggleStickerSearch').prop("checked", false);
-        $('#removeInputBtn').show()
+        $('#removeInputBtn').show();
+        $('#inputMessage').focus();
+
     } else {        
         $('#stickerSearch').css({"opacity": 0.6, "font-size": "initial"});        
         $('#toggleStickerSearch').prop("checked", true);        
         $('#inputMessage')
             .val("")
             .off("input", "#inputMessage", getGifs);    // remove event listener
-        $('#searchResults').removeClass("open")
-                        .empty();
+        $('#searchResults').removeClass("open").empty();
         $('#removeInputBtn').hide();
+        // TODO: close keyboard
+        $('#inputMessage').blur();
+
     }
-    $('#inputMessage').focus();
 }
 $(document).on("click", ".giphy-gif", function(e) {
     e.preventDefault();

@@ -17,15 +17,6 @@ html, body {
     margin: 0;
     padding: 0;
 }
-input:focus {
-    -webkit-transition: all 0.5;
-    -moz-transition: all 0.5;
-    -ms-transition: all 0.5;
-    -o-transition: all 0.5;
-    transition: all 0.5;
-    outline: none;
-    box-shadow: 0 0 5px 1px rgba(0,0,0,0.5);
-}
 strong {
     /* font-family: 'Advent Pro', Helvetica, sans-serif; */
     font-weight: bold;
