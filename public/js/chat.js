@@ -1,3 +1,5 @@
+'use strict';
+
 let socket = io();
 let $messageForm = $('#messageForm');
 $('#jet-smoke').hide();
@@ -9,12 +11,28 @@ $(document).ready(function() {
         $(`#${themeColor}`).click();
     }
 
-    // Checks if should display install popup notification:
-    if (isIos() && !isInStandaloneMode()) {
-        document.getElementById('ios-install-banner').style.display = 'block';
+    if (isIos()) {
+        document.body.classList.add("ios");
+
+        // check if should display install popup notification
+        if (!isInStandaloneMode()) {
+            shouldShowIosInstallBanner(true);
+            document.getElementById('close-ios-install-banner').addEventListener('click', function() {
+                shouldShowIosInstallBanner(false);
+            });
+        }
     }
 });
 
+function shouldShowIosInstallBanner(show) {
+    if (show) {
+        document.getElementById('ios-install-banner').style.display = 'block';
+        
+    } else {
+        document.getElementById('ios-install-banner').style.display = 'none';
+
+    }
+}
 
 socket.on('newMessage', function(message){
     renderMessage(message);
@@ -50,37 +68,31 @@ let notificationsButton = document.getElementById('notifications-button');
 notificationsButton.addEventListener("click", function() {
     //TODO: check permissions if notifications icon is clicked
     const PUBLIC_VAPID_KEY = Cookies.get('PUBLIC_VAPID_KEY');
-    if (PUBLIC_VAPID_KEY) {
+    if (PUBLIC_VAPID_KEY && 'serviceWorker' in navigator) {
         requestPushNotificationPermissions(PUBLIC_VAPID_KEY);
     }
 });
 
 function requestPushNotificationPermissions(PUBLIC_VAPID_KEY) {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistration()
-        .then(function(registration) {
-            if (!registration) {
-                console.log("navigator.serviceWorker.getRegistration: no service worker registration found");
-                return;
-            }
+    navigator.serviceWorker.getRegistration()
+    .then(function(registration) {
+        if (!registration) {
+            console.log("navigator.serviceWorker.getRegistration: no service worker registration found");
+            return;
+        }
 
-            registration.pushManager.permissionState({userVisibleOnly: true}).then(permission => {
-                // Possible values are 'prompt', 'denied', or 'granted'
-                if (permission === "prompt") {
-                    // request permission only when user has not either denied or accepted notifications 
-                    registration.pushManager.subscribe({
-                        userVisibleOnly: true,
-                        applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY)
-                    }).then(function(subscription) {
-                        socket.emit('userSubscribed', { subscription });
-                    });
-                }
-    
-            }).catch((error) => {
-                console.log("pushManager.permissionState: error", error)
+        // registration.pushManager.permissionState({userVisibleOnly: true}).then(permission => {
+            // Possible values of permission = 'prompt' | 'denied' | 'granted'
+            registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY)
+            }).then(function(subscription) {
+                socket.emit('userSubscribed', { subscription });
             });
-        });
-    }
+        // }).catch((error) => {
+            // console.log("pushManager.permissionState: error", error)
+        // });
+    });
 }
 
 let installButton = document.getElementById('install-button');

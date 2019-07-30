@@ -1,3 +1,5 @@
+'use strict';
+
 function updateUsersList(usersList) {   
     let userIcons = ["astronaut", "ninja", "tie", "secret"];
     let icon = userIcons[Math.floor((Math.random() * userIcons.length))];
@@ -18,6 +20,7 @@ function updateUsersList(usersList) {
     
     $('.active-members').html(html);
 }
+
 function renderMessage(message) {
     let template = $('#message-template').html();
     let html = Mustache.render(template, {
@@ -29,6 +32,7 @@ function renderMessage(message) {
     setInputPlaceholder();
     scrollToBottom();
 }
+
 function renderImage(message) {    
     let template = $('#image-message-template').html();
     let html = Mustache.render(template, {
@@ -40,6 +44,7 @@ function renderImage(message) {
     setInputPlaceholder();
     scrollToBottom();
 }
+
 function renderLocationMessage(message) {
     let template = $('#location-message-template').html();
     let html = Mustache.render(template, {
@@ -50,6 +55,7 @@ function renderLocationMessage(message) {
 
     scrollToBottom();
 }
+
 function scrollToBottom() {
     const $messages = $('#messages');
     const $newMessage = $messages.children('div:last-child');

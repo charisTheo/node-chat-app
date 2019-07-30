@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "npm run build && node server/server.js",
-    "dev": "gulp nodemon-watch | true",
+    "dev": "npm run build && gulp nodemon-watch",
     "build": "gulp build",
     "test": "mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
@@ -28,6 +28,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-minify-css": "^1.2.4",
     "gulp-nodemon": "^2.4.2",
+    "gulp-sourcemaps": "^2.6.5",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4",
     "workbox-build": "^4.3.1"

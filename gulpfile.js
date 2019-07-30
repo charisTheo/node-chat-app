@@ -3,6 +3,7 @@ let nodemon = require('gulp-nodemon');
 let minifyCSS = require('gulp-minify-css');
 let minifyJS = require('gulp-babel-minify');
 let concat = require('gulp-concat');
+var sourcemaps = require('gulp-sourcemaps');
 let workboxBuild = require('workbox-build');
 let del = require('del');
 
@@ -19,9 +20,12 @@ gulp.task('minify-global-css', function(done) {
      './public/css/styles.css',
      './public/css/index.css',
      './public/css/media-queries.css',
+     './public/css/deviceSpecific.css'
     ])
+    .pipe(sourcemaps.init())
     .pipe(minifyCSS())
     .pipe(concat('global.min.css'))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('public/css/compressed/'));
     // .pipe(browserSync.reload({
     //     stream: true
@@ -37,8 +41,10 @@ gulp.task('minify-chat-css', function(done) {
         './public/css/modal.css',
         './public/css/chat.css',
     ])
+    .pipe(sourcemaps.init())
    .pipe(minifyCSS())
    .pipe(concat('chat.min.css'))
+   .pipe(sourcemaps.write('.'))
    .pipe(gulp.dest('public/css/compressed/'));
 //    .pipe(browserSync.reload({
 //         stream: true
@@ -63,8 +69,10 @@ gulp.task('minify-js', function(done) {
         './public/js/sendSvgAnim.js',
         './public/js/stickerSearch.js'
     ])
+    .pipe(sourcemaps.init())
     .pipe(concat('bundle.min.js'))
     .pipe(minifyJS())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('public/js/compressed/'));
     
     return done();
@@ -116,8 +124,8 @@ gulp.task('nodemon-watch', gulp.series('service-worker', 'nodemon', function(don
 
     return gulp.watch(
         ['./public/css/*.css', './public/js/*.js'], 
-        gulp.series(clean, 'minify-css', 'minify-js'
-    ));
+        gulp.series(clean, 'minify-css', 'minify-js')
+    );
 }));
 
 gulp.task('build', gulp.series(clean, 'minify-css', 'minify-js', 'service-worker'));

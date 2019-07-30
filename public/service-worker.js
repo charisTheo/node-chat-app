@@ -1,15 +1,33 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 
+// ex: "30-07-2019-11-19-52"
+const version = new Date().toLocaleString().replace(/\/|,\s|:/g, '-'); 
+
 if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
+  configureWorkbox();
+
+} else {
+  console.log(`Boo! Workbox didn't load 😬`);
+  
+}
+
+function configureWorkbox() {
+  workbox.core.setCacheNameDetails({
+    prefix: 'chat-app',
+    suffix: version,
+    precache: 'precache-cache',
+    runtime: 'runtime-cache'
+  });
+
   workbox.precaching.precacheAndRoute([
   {
     "url": "css/compressed/chat.min.css",
-    "revision": "31a6d6b0edf05b1ae22e6f7af6102b5b"
+    "revision": "d195c62b036eefd7ad7782c0d9aaaeed"
   },
   {
     "url": "css/compressed/global.min.css",
-    "revision": "53fc90d8497eeaebef2f28ab1fa73eff"
+    "revision": "c493cfd9ab35b67372095dcb728d3595"
   },
   {
     "url": "index.html",
@@ -17,11 +35,11 @@ if (workbox) {
   },
   {
     "url": "chat.html",
-    "revision": "b98cd2e3e794367aea71fb9397a2ba30"
+    "revision": "dda1b70ebaa8eb2bdeb9d9f1cebf15c5"
   },
   {
     "url": "js/chat.js",
-    "revision": "0934fd28af9b269e9029b9ff980ce83e"
+    "revision": "c38816716f404a1789d92e854d4f7cf6"
   },
   {
     "url": "js/classie.js",
@@ -29,7 +47,7 @@ if (workbox) {
   },
   {
     "url": "js/compressed/bundle.min.js",
-    "revision": "d5420cfbda7e6f7a5e9c00601ab686b9"
+    "revision": "42f4b05cd0cc64fd667d98d86b3b9207"
   },
   {
     "url": "js/cookie.min.js",
@@ -45,7 +63,7 @@ if (workbox) {
   },
   {
     "url": "js/index.js",
-    "revision": "c7776d62a5e43d161b801bae08c5e193"
+    "revision": "909f7286e2647b10a29e8059f193d4d8"
   },
   {
     "url": "js/jquery-1.9.1.min.js",
@@ -61,7 +79,7 @@ if (workbox) {
   },
   {
     "url": "js/messageFormHandlers.js",
-    "revision": "4651e3423a04522a1a84f0b20b728db0"
+    "revision": "38e93778b2ff9ee3bb9770381770f8d7"
   },
   {
     "url": "js/modalEffects.js",
@@ -73,7 +91,7 @@ if (workbox) {
   },
   {
     "url": "js/rendering.js",
-    "revision": "2ca266bfb854ed140d91656fa5333ca7"
+    "revision": "550bd1746f02fb1e8800dacddd4174c3"
   },
   {
     "url": "js/sendSvgAnim.js",
@@ -141,25 +159,30 @@ if (workbox) {
   }
 ]);
 
-} else {
-  console.log(`Boo! Workbox didn't load 😬`);
+  workbox.routing.registerRoute(
+    /\.js$/,
+    new workbox.strategies.StaleWhileRevalidate()
+  );
   
+  workbox.routing.registerRoute(
+    /\.css$/,
+    new workbox.strategies.StaleWhileRevalidate()
+  );
+  
+  workbox.routing.registerRoute(
+    /\.html$/,
+    new workbox.strategies.StaleWhileRevalidate()
+  );
 }
 
-workbox.routing.registerRoute(
-  /\.js$/,
-  new workbox.strategies.CacheFirst()
-);
-
-workbox.routing.registerRoute(
-  /\.css$/,
-  new workbox.strategies.CacheFirst()
-);
-
-workbox.routing.registerRoute(
-  /\.html$/,
-  new workbox.strategies.CacheFirst()
-);
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches
+      .keys()
+      .then(keys => keys.filter(key => !key.endsWith(version)))
+      .then(keys => Promise.all(keys.map(key => caches.delete(key))))
+  );
+});
 
 self.addEventListener('push', function(event) {
     let options = {};

@@ -290,3 +290,10 @@ input#inputMessage {
 #ios-install-banner > img.share-ios {
     filter: invert(64%) sepia(76%) saturate(3603%) hue-rotate(197deg) brightness(102%) contrast(93%);
 }
+#ios-install-banner > #close-ios-install-banner {
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    font-size: 14px;
+    color: #004ba0;
+}

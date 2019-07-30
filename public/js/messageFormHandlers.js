@@ -1,3 +1,5 @@
+'use strict';
+
 $('#removeInputBtn').on("click", function(e) {
     e.preventDefault();
     $('#inputMessage').val("");
@@ -12,10 +14,10 @@ $('#inputMessage').keyup(function(e) {
         $('#removeInputBtn').hide("slow");
     }
 });
+
 if ($('#inputMessage').val() == "") {
     $('#removeInputBtn').hide("slow");
 }
-
 
 // SUBMIT HANDLERS
 $('#inputMessage').keypress(function(e) {
@@ -25,11 +27,13 @@ $('#inputMessage').keypress(function(e) {
         messageFormSubmitHandler();
     }
 });
+
 $('#messageForm').submit(function(event){
     event.preventDefault();
     messageFormSubmitHandler();
     $('#removeInputBtn').hide("slow");  // fix for: when form submitted from submit input button 
 });
+
 function messageFormSubmitHandler() {
     let mes = $messageForm.find("input[name=message]").val();
     
